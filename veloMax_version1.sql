@@ -1,4 +1,4 @@
-#DROP DATABASE veloMax;
+DROP DATABASE veloMax;
 #DROP TABLE adresse;
 #DROP TABLE contact;
 #DROP TABLE fournisseur;
@@ -15,16 +15,16 @@
 CREATE DATABASE veloMax;
 USE veloMax;
 
-CREATE TABLE modele_bicyclette(
-no_bicyclette INT PRIMARY KEY auto_increment,
-nom_bicyclette VARCHAR(40),
+CREATE TABLE vélo(
+no_modele INT PRIMARY KEY auto_increment,
+nom_vélo VARCHAR(40),
 grandeur VARCHAR(40),
-prix_bicyclette DOUBLE,
-ligne ENUM('VTT', 'Vélo de course', 'Classique','BMX'), 
-date_intro_modele DATETIME,
-date_discon_modele DATETIME
+prix_vélo DOUBLE, 
+date_intro_vélo DATETIME,
+date_disc_vélo DATETIME,
+ligne_produit ENUM('VTT', 'Vélo de course', 'Classique','BMX')
 );
-alter table modele_bicyclette auto_increment=100;
+alter table vélo auto_increment=100;
 
 
 CREATE TABLE adresse(
@@ -80,7 +80,7 @@ alter table stock auto_increment=5000;
 CREATE TABLE piece(
 no_piece INT PRIMARY KEY auto_increment,
 siret_fournisseur INT,
-no_bicyclette INT,
+no_modele INT,
 description_piece VARCHAR(40),
 no_produit INT,
 prix_piece DOUBLE,
@@ -94,10 +94,10 @@ alter table piece auto_increment=300;
 
 CREATE TABLE estEn(
 id_estEn INT PRIMARY KEY NOT NULL auto_increment,
-no_bicyclette INT,
+no_modele INT,
 id_stock INT,
 no_piece INT,
-FOREIGN KEY (no_bicyclette) REFERENCES modele_bicyclette(no_bicyclette) ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY (no_modele) REFERENCES vélo(no_modele) ON DELETE CASCADE ON UPDATE CASCADE,
 FOREIGN KEY (id_stock) REFERENCES stock(id_stock) ON DELETE CASCADE ON UPDATE CASCADE,
 FOREIGN KEY (no_piece) REFERENCES piece(no_piece) ON DELETE CASCADE ON UPDATE CASCADE
 );
@@ -154,12 +154,12 @@ alter table commande auto_increment=15000;
 CREATE TABLE contient(
 id_contient INT PRIMARY KEY NOT NULL auto_increment,
 no_commande INT NOT NULL,
-no_bicyclette INT,
+no_modele INT,
 no_piece INT,
 quantite_bicyclette INT,
 quantite_piece INT,
 FOREIGN KEY (no_piece) REFERENCES piece(no_piece) ON DELETE CASCADE,
-FOREIGN KEY (no_bicyclette) REFERENCES modele_bicyclette(no_bicyclette) ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY (no_modele) REFERENCES vélo(no_modele) ON DELETE CASCADE ON UPDATE CASCADE,
 FOREIGN KEY (no_commande) REFERENCES commande(no_commande) ON DELETE CASCADE ON UPDATE CASCADE
 );
 alter table contient auto_increment=30;
@@ -172,8 +172,8 @@ PRIMARY KEY (siret_fournisseur,no_piece)
 
 CREATE TABLE est_compose_de(
 no_piece INT,
-no_bicyclette INT,
-PRIMARY KEY (no_piece,no_bicyclette)
+no_modele INT,
+PRIMARY KEY (no_piece,no_modele)
 );
 
 CREATE TABLE adhere(
@@ -217,24 +217,24 @@ insert into adresse (rue,ville,code_postal,province) values ('6 rue Maréchal','
 insert into adresse (rue,ville,code_postal,province) values ('68 rue des lilas','Paris','75005','Ile de France');
 insert into adresse (rue,ville,code_postal,province) values ('34 boulevard de la Victoire','Toulouse','31200','Occitanie');
 
-insert into modele_bicyclette (nom_bicyclette,grandeur,prix_bicyclette,ligne,date_intro_modele,date_discon_modele) values ('Kilimandjaro','Adultes','569','VTT','12/02/20','02/04/20');
-insert into modele_bicyclette (nom_bicyclette,grandeur,prix_bicyclette,ligne,date_intro_modele,date_discon_modele) values ('Kilimandjaro','Garçons','569','VTT','12/04/20','02/05/20');
-insert into modele_bicyclette (nom_bicyclette,grandeur,prix_bicyclette,ligne,date_intro_modele,date_discon_modele) values ('NorthPole','Hommes','129','Vélo de course','12/04/20','02/05/20');
-insert into modele_bicyclette (nom_bicyclette,grandeur,prix_bicyclette,ligne,date_intro_modele,date_discon_modele) values ('NorthPole','Adultes','359','Classique','10/10/20','20/10/20');
-insert into modele_bicyclette (nom_bicyclette,grandeur,prix_bicyclette,ligne,date_intro_modele,date_discon_modele) values ('NorthPole','Adultes','329','VTT','10/10/20','20/10/20');
-insert into modele_bicyclette (nom_bicyclette,grandeur,prix_bicyclette,ligne,date_intro_modele,date_discon_modele) values ('Hooligan','Jeunes','329','Vélo de course','01/10/20','05/06/21');
-insert into modele_bicyclette (nom_bicyclette,grandeur,prix_bicyclette,ligne,date_intro_modele,date_discon_modele) values ('Orléans','Dames','359','BMX','01/10/20','05/06/21');
-insert into modele_bicyclette (nom_bicyclette,grandeur,prix_bicyclette,ligne,date_intro_modele,date_discon_modele) values ('BlueJay','Jeunes','569','Classique','21/06/20','12/12/21');
-insert into modele_bicyclette (nom_bicyclette,grandeur,prix_bicyclette,ligne,date_intro_modele,date_discon_modele) values ('BlueJay','Hommes','569','BMX','21/06/20','12/12/21');
-insert into modele_bicyclette (nom_bicyclette,grandeur,prix_bicyclette,ligne,date_intro_modele,date_discon_modele) values ('Trail Explorer','Jeunes','129','Vélo de course','21/06/20','12/12/21');
-insert into modele_bicyclette (nom_bicyclette,grandeur,prix_bicyclette,ligne,date_intro_modele,date_discon_modele) values ('Trail Explorer','Filles','229','Classique','21/06/20','12/12/21');
-insert into modele_bicyclette (nom_bicyclette,grandeur,prix_bicyclette,ligne,date_intro_modele,date_discon_modele) values ('Trail Explorer','Garçons','229','VTT','01/10/20','05/06/21');
-insert into modele_bicyclette (nom_bicyclette,grandeur,prix_bicyclette,ligne,date_intro_modele,date_discon_modele) values ('Night Hawk','Adultes','189','Classique','01/10/20','05/06/21');
-insert into modele_bicyclette (nom_bicyclette,grandeur,prix_bicyclette,ligne,date_intro_modele,date_discon_modele) values ('Night Hawk','Filles','195','Vélo de course','01/10/20','05/06/21');
-insert into modele_bicyclette (nom_bicyclette,grandeur,prix_bicyclette,ligne,date_intro_modele,date_discon_modele) values ('Tierra Verde','Adultes','89','Vélo de course','01/10/20','05/06/21');
-insert into modele_bicyclette (nom_bicyclette,grandeur,prix_bicyclette,ligne,date_intro_modele,date_discon_modele) values ('Mud Zinger I','Jeunes','189','Classique','05/05/20','02/06/20');
-insert into modele_bicyclette (nom_bicyclette,grandeur,prix_bicyclette,ligne,date_intro_modele,date_discon_modele) values ('Mud Zinger I','Jeunes','199','VTT','05/05/20','02/06/20');
-insert into modele_bicyclette (nom_bicyclette,grandeur,prix_bicyclette,ligne,date_intro_modele,date_discon_modele) values ('Mud Zinger II','Hommes','569','BMX','05/05/20','02/06/20');
+insert into vélo (nom_vélo,grandeur,prix_vélo,ligne_produit,date_intro_vélo,date_disc_vélo) values ('Kilimandjaro','Adultes','569','VTT','12/02/20','02/04/20');
+insert into vélo (nom_vélo,grandeur,prix_vélo,ligne_produit,date_intro_vélo,date_disc_vélo) values ('Kilimandjaro','Garçons','569','VTT','12/04/20','02/05/20');
+insert into vélo (nom_vélo,grandeur,prix_vélo,ligne_produit,date_intro_vélo,date_disc_vélo) values ('NorthPole','Hommes','129','Vélo de course','12/04/20','02/05/20');
+insert into vélo (nom_vélo,grandeur,prix_vélo,ligne_produit,date_intro_vélo,date_disc_vélo) values ('NorthPole','Adultes','359','Classique','10/10/20','20/10/20');
+insert into vélo (nom_vélo,grandeur,prix_vélo,ligne_produit,date_intro_vélo,date_disc_vélo) values ('NorthPole','Adultes','329','VTT','10/10/20','20/10/20');
+insert into vélo (nom_vélo,grandeur,prix_vélo,ligne_produit,date_intro_vélo,date_disc_vélo) values ('Hooligan','Jeunes','329','Vélo de course','01/10/20','05/06/21');
+insert into vélo (nom_vélo,grandeur,prix_vélo,ligne_produit,date_intro_vélo,date_disc_vélo) values ('Orléans','Dames','359','BMX','01/10/20','05/06/21');
+insert into vélo (nom_vélo,grandeur,prix_vélo,ligne_produit,date_intro_vélo,date_disc_vélo) values ('BlueJay','Jeunes','569','Classique','21/06/20','12/12/21');
+insert into vélo (nom_vélo,grandeur,prix_vélo,ligne_produit,date_intro_vélo,date_disc_vélo) values ('BlueJay','Hommes','569','BMX','21/06/20','12/12/21');
+insert into vélo (nom_vélo,grandeur,prix_vélo,ligne_produit,date_intro_vélo,date_disc_vélo) values ('Trail Explorer','Jeunes','129','Vélo de course','21/06/20','12/12/21');
+insert into vélo (nom_vélo,grandeur,prix_vélo,ligne_produit,date_intro_vélo,date_disc_vélo) values ('Trail Explorer','Filles','229','Classique','21/06/20','12/12/21');
+insert into vélo (nom_vélo,grandeur,prix_vélo,ligne_produit,date_intro_vélo,date_disc_vélo) values ('Trail Explorer','Garçons','229','VTT','01/10/20','05/06/21');
+insert into vélo (nom_vélo,grandeur,prix_vélo,ligne_produit,date_intro_vélo,date_disc_vélo) values ('Night Hawk','Adultes','189','Classique','01/10/20','05/06/21');
+insert into vélo (nom_vélo,grandeur,prix_vélo,ligne_produit,date_intro_vélo,date_disc_vélo) values ('Night Hawk','Filles','195','Vélo de course','01/10/20','05/06/21');
+insert into vélo (nom_vélo,grandeur,prix_vélo,ligne_produit,date_intro_vélo,date_disc_vélo) values ('Tierra Verde','Adultes','89','Vélo de course','01/10/20','05/06/21');
+insert into vélo (nom_vélo,grandeur,prix_vélo,ligne_produit,date_intro_vélo,date_disc_vélo) values ('Mud Zinger I','Jeunes','189','Classique','05/05/20','02/06/20');
+insert into vélo (nom_vélo,grandeur,prix_vélo,ligne_produit,date_intro_vélo,date_disc_vélo) values ('Mud Zinger I','Jeunes','199','VTT','05/05/20','02/06/20');
+insert into vélo (nom_vélo,grandeur,prix_vélo,ligne_produit,date_intro_vélo,date_disc_vélo) values ('Mud Zinger II','Hommes','569','BMX','05/05/20','02/06/20');
 
 insert into fournisseur (nom_entreprise,libelle,id_contact,id_adresse) values ('AXA','1','52','1000');
 insert into fournisseur (nom_entreprise,libelle,id_contact,id_adresse) values ('Renauld','2','50','1001');
@@ -255,50 +255,50 @@ insert into stock (quantite) values ('30');
 insert into stock (quantite) values ('35');
 insert into stock (quantite) values ('45');
 
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('500', '2000','Cadre','37','15','04/04/20','10/04/21','2','5000');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('500', '2000','Guidon','12','12','04/04/20','10/04/21','2','5002');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('500', '2000','Freins','15','15','04/04/20','10/04/21','2','5001');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('500', '2000','Selle','18','36','04/04/20','10/04/21','2','5000');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('500', '2000','Dérailleur Avant','48','44','04/04/20','10/04/21','2','5003');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('500', '2000','Dérailleur Arrière','45','41','04/04/20','10/04/21','2','5000');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('501', '2005','Guidon','20','556','15/10/20','15/11/21','30','5000');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('501', '2015','Freins','37','20','21/03/20','10/06/21','5','5001');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('502', '2003','Selle','3457','20','14/12/20','10/04/21','5','5001');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('502', '2002','Dérailleur Avant','45','50','04/02/20','11/11/21','6','5002');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('502', '2001','Dérailleur Arrière','56','35','09/09/20','15/09/21','8','5002');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('503', '2003','Roue Avant','5','34.9','16/09/20','22/12/21','13','5002');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('504', '2003','Roue Arrière','8','15.5','20/10/20','14/04/21','13','5003');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('504', '2004','Réflecteurs','15','16.99','17/07/20','02/04/21','13','5003');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('505', '2005','Pédalier','15','25','01/02/20','02/04/20','2','5003');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('505', '2015','Ordinateur','8','16.99','07/03/20','12/12/20','4','5004');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('505', '2005','Pédalier','15','30','01/02/20','02/04/20','2','5003');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('505', '2015','Roue Avant','8','18.99','07/03/20','12/12/20','4','5004');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('505', '2015','Roue Arrière','8','12.99','07/03/20','12/12/20','4','5004');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('504', '2014','Petit panier','13','45','11/03/20','25/11/20','4','5004');
-insert into piece (siret_fournisseur,no_bicyclette,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('504', '2013','Grand panier','9','33','24/11/20','26/12/20','4','5004');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('500', '2000','Cadre','37','15','04/04/20','10/04/21','2','5000');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('500', '2000','Guidon','12','12','04/04/20','10/04/21','2','5002');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('500', '2000','Freins','15','15','04/04/20','10/04/21','2','5001');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('500', '2000','Selle','18','36','04/04/20','10/04/21','2','5000');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('500', '2000','Dérailleur Avant','48','44','04/04/20','10/04/21','2','5003');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('500', '2000','Dérailleur Arrière','45','41','04/04/20','10/04/21','2','5000');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('501', '2005','Guidon','20','556','15/10/20','15/11/21','30','5000');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('501', '2015','Freins','37','20','21/03/20','10/06/21','5','5001');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('502', '2003','Selle','3457','20','14/12/20','10/04/21','5','5001');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('502', '2002','Dérailleur Avant','45','50','04/02/20','11/11/21','6','5002');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('502', '2001','Dérailleur Arrière','56','35','09/09/20','15/09/21','8','5002');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('503', '2003','Roue Avant','5','34.9','16/09/20','22/12/21','13','5002');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('504', '2003','Roue Arrière','8','15.5','20/10/20','14/04/21','13','5003');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('504', '2004','Réflecteurs','15','16.99','17/07/20','02/04/21','13','5003');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('505', '2005','Pédalier','15','25','01/02/20','02/04/20','2','5003');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('505', '2015','Ordinateur','8','16.99','07/03/20','12/12/20','4','5004');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('505', '2005','Pédalier','15','30','01/02/20','02/04/20','2','5003');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('505', '2015','Roue Avant','8','18.99','07/03/20','12/12/20','4','5004');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('505', '2015','Roue Arrière','8','12.99','07/03/20','12/12/20','4','5004');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('504', '2014','Petit panier','13','45','11/03/20','25/11/20','4','5004');
+insert into piece (siret_fournisseur,no_modele,description_piece,no_produit,prix_piece,date_intro_piece,date_discon_piece,delai_approvisionnement,id_stock) values ('504', '2013','Grand panier','9','33','24/11/20','26/12/20','4','5004');
 
-insert into estEn (no_bicyclette,id_stock,no_piece) values ('100','5000',NULL);
-insert into estEn (no_bicyclette,id_stock,no_piece) values ('101','5001','300');
-insert into estEn (no_bicyclette,id_stock,no_piece) values ('102','5003','301');
-insert into estEn (no_bicyclette,id_stock,no_piece) values ('103','5004',NULL);
-insert into estEn (no_bicyclette,id_stock,no_piece) values ('104','5001',NULL);
-insert into estEn (no_bicyclette,id_stock,no_piece) values ('105','5003',NULL);
-insert into estEn (no_bicyclette,id_stock,no_piece) values ('106','5000',NULL);
-insert into estEn (no_bicyclette,id_stock,no_piece) values ('107','5001','302');
-insert into estEn (no_bicyclette,id_stock,no_piece) values ('108','5003','303');
-insert into estEn (no_bicyclette,id_stock,no_piece) values ('109','5004',NULL);
-insert into estEn (no_bicyclette,id_stock,no_piece) values ('110','5001',NULL);
-insert into estEn (no_bicyclette,id_stock,no_piece) values ('111','5003',NULL);
-insert into estEn (no_bicyclette,id_stock,no_piece) values ('112','5000','304');
-insert into estEn (no_bicyclette,id_stock,no_piece) values ('113','5001','305');
-insert into estEn (no_bicyclette,id_stock,no_piece) values ('114','5003',NULL);
-insert into estEn (no_bicyclette,id_stock,no_piece) values ('115','5000','306');
-insert into estEn (no_bicyclette,id_stock,no_piece) values ('116','5004','307');
-insert into estEn (no_bicyclette,id_stock,no_piece) values ('117','5003','312');
-insert into estEn (no_bicyclette,id_stock,no_piece) values (NULL,'5003','308');
-insert into estEn (no_bicyclette,id_stock,no_piece) values (NULL,'5000','309');
-insert into estEn (no_bicyclette,id_stock,no_piece) values (NULL,'5004','310');
-insert into estEn (no_bicyclette,id_stock,no_piece) values (NULL,'5001','311');
+insert into estEn (no_modele,id_stock,no_piece) values ('100','5000',NULL);
+insert into estEn (no_modele,id_stock,no_piece) values ('101','5001','300');
+insert into estEn (no_modele,id_stock,no_piece) values ('102','5003','301');
+insert into estEn (no_modele,id_stock,no_piece) values ('103','5004',NULL);
+insert into estEn (no_modele,id_stock,no_piece) values ('104','5001',NULL);
+insert into estEn (no_modele,id_stock,no_piece) values ('105','5003',NULL);
+insert into estEn (no_modele,id_stock,no_piece) values ('106','5000',NULL);
+insert into estEn (no_modele,id_stock,no_piece) values ('107','5001','302');
+insert into estEn (no_modele,id_stock,no_piece) values ('108','5003','303');
+insert into estEn (no_modele,id_stock,no_piece) values ('109','5004',NULL);
+insert into estEn (no_modele,id_stock,no_piece) values ('110','5001',NULL);
+insert into estEn (no_modele,id_stock,no_piece) values ('111','5003',NULL);
+insert into estEn (no_modele,id_stock,no_piece) values ('112','5000','304');
+insert into estEn (no_modele,id_stock,no_piece) values ('113','5001','305');
+insert into estEn (no_modele,id_stock,no_piece) values ('114','5003',NULL);
+insert into estEn (no_modele,id_stock,no_piece) values ('115','5000','306');
+insert into estEn (no_modele,id_stock,no_piece) values ('116','5004','307');
+insert into estEn (no_modele,id_stock,no_piece) values ('117','5003','312');
+insert into estEn (no_modele,id_stock,no_piece) values (NULL,'5003','308');
+insert into estEn (no_modele,id_stock,no_piece) values (NULL,'5000','309');
+insert into estEn (no_modele,id_stock,no_piece) values (NULL,'5004','310');
+insert into estEn (no_modele,id_stock,no_piece) values (NULL,'5001','311');
 
 insert into ind_client (id_programme,id_adresse,nom_client,prenom_client,mail_client,telephone_client) values ('1','1002','Marine','Leo','marine.leo@gmail.com','0214253665');
 insert into ind_client (id_programme,id_adresse,nom_client,prenom_client,mail_client,telephone_client) values ('2','1003','Poireau','Julie','poireau.julie@gmail.com','0632654578');
@@ -323,17 +323,17 @@ insert into commande (id_ind,id_boutique,id_adresse,date_commande,date_livraison
 insert into commande (id_ind,id_boutique,id_adresse,date_commande,date_livraison) values ('3004',NULL,'1002','11/06/20','28/05/21');
 insert into commande (id_ind,id_boutique,id_adresse,date_commande,date_livraison) values ('3000','4001','1001','12/08/20','02/05/21');
 
-insert into contient (no_commande,no_bicyclette,no_piece,quantite_bicyclette,quantite_piece) values ('15000',NULL,'300','0','5');
-insert into contient (no_commande,no_bicyclette,no_piece,quantite_bicyclette,quantite_piece) values ('15001','101',NULL,'2','0');
-insert into contient (no_commande,no_bicyclette,no_piece,quantite_bicyclette,quantite_piece) values ('15002','117','305','1','7');
-insert into contient (no_commande,no_bicyclette,no_piece,quantite_bicyclette,quantite_piece) values ('15003',NULL,'302','0','2');
-insert into contient (no_commande,no_bicyclette,no_piece,quantite_bicyclette,quantite_piece) values ('15004','111','302','3','15');
-insert into contient (no_commande,no_bicyclette,no_piece,quantite_bicyclette,quantite_piece) values ('15009','102',NULL,'1','0');
-insert into contient (no_commande,no_bicyclette,no_piece,quantite_bicyclette,quantite_piece) values ('15008','103',NULL,'1','0');
-insert into contient (no_commande,no_bicyclette,no_piece,quantite_bicyclette,quantite_piece) values ('15007',NULL,'302','0','4');
-insert into contient (no_commande,no_bicyclette,no_piece,quantite_bicyclette,quantite_piece) values ('15009','103',NULL,'1','0');
-insert into contient (no_commande,no_bicyclette,no_piece,quantite_bicyclette,quantite_piece) values ('15008','104',NULL,'1','0');
-insert into contient (no_commande,no_bicyclette,no_piece,quantite_bicyclette,quantite_piece) values ('15007',NULL,'302','0','4');
+insert into contient (no_commande,no_modele,no_piece,quantite_bicyclette,quantite_piece) values ('15000',NULL,'300','0','5');
+insert into contient (no_commande,no_modele,no_piece,quantite_bicyclette,quantite_piece) values ('15001','101',NULL,'2','0');
+insert into contient (no_commande,no_modele,no_piece,quantite_bicyclette,quantite_piece) values ('15002','117','305','1','7');
+insert into contient (no_commande,no_modele,no_piece,quantite_bicyclette,quantite_piece) values ('15003',NULL,'302','0','2');
+insert into contient (no_commande,no_modele,no_piece,quantite_bicyclette,quantite_piece) values ('15004','111','302','3','15');
+insert into contient (no_commande,no_modele,no_piece,quantite_bicyclette,quantite_piece) values ('15009','102',NULL,'1','0');
+insert into contient (no_commande,no_modele,no_piece,quantite_bicyclette,quantite_piece) values ('15008','103',NULL,'1','0');
+insert into contient (no_commande,no_modele,no_piece,quantite_bicyclette,quantite_piece) values ('15007',NULL,'302','0','4');
+insert into contient (no_commande,no_modele,no_piece,quantite_bicyclette,quantite_piece) values ('15009','103',NULL,'1','0');
+insert into contient (no_commande,no_modele,no_piece,quantite_bicyclette,quantite_piece) values ('15008','104',NULL,'1','0');
+insert into contient (no_commande,no_modele,no_piece,quantite_bicyclette,quantite_piece) values ('15007',NULL,'302','0','4');
 
 insert into fournit (siret_fournisseur,no_piece) values ('500','300');
 insert into fournit (siret_fournisseur,no_piece) values ('501','300');
@@ -359,202 +359,202 @@ insert into fournit (siret_fournisseur,no_piece) values ('505','312');
 insert into fournit (siret_fournisseur,no_piece) values ('502','311');
 insert into fournit (siret_fournisseur,no_piece) values ('503','310');
 
-insert into est_compose_de (no_bicyclette,no_piece) values ('100','300');
-insert into est_compose_de (no_bicyclette,no_piece) values ('100','301');
-insert into est_compose_de (no_bicyclette,no_piece) values ('100','307');
-insert into est_compose_de (no_bicyclette,no_piece) values ('100','303');
-insert into est_compose_de (no_bicyclette,no_piece) values ('100','304');
-insert into est_compose_de (no_bicyclette,no_piece) values ('100','310');
-insert into est_compose_de (no_bicyclette,no_piece) values ('100','317');
-insert into est_compose_de (no_bicyclette,no_piece) values ('100','312');
-insert into est_compose_de (no_bicyclette,no_piece) values ('100','316');
+insert into est_compose_de (no_modele,no_piece) values ('100','300');
+insert into est_compose_de (no_modele,no_piece) values ('100','301');
+insert into est_compose_de (no_modele,no_piece) values ('100','307');
+insert into est_compose_de (no_modele,no_piece) values ('100','303');
+insert into est_compose_de (no_modele,no_piece) values ('100','304');
+insert into est_compose_de (no_modele,no_piece) values ('100','310');
+insert into est_compose_de (no_modele,no_piece) values ('100','317');
+insert into est_compose_de (no_modele,no_piece) values ('100','312');
+insert into est_compose_de (no_modele,no_piece) values ('100','316');
 
-insert into est_compose_de (no_bicyclette,no_piece) values ('101','300');
-insert into est_compose_de (no_bicyclette,no_piece) values ('101','301');
-insert into est_compose_de (no_bicyclette,no_piece) values ('101','307');
-insert into est_compose_de (no_bicyclette,no_piece) values ('101','303');
-insert into est_compose_de (no_bicyclette,no_piece) values ('101','304');
-insert into est_compose_de (no_bicyclette,no_piece) values ('101','310');
-insert into est_compose_de (no_bicyclette,no_piece) values ('101','317');
-insert into est_compose_de (no_bicyclette,no_piece) values ('101','312');
-insert into est_compose_de (no_bicyclette,no_piece) values ('101','314');
-insert into est_compose_de (no_bicyclette,no_piece) values ('101','315');
+insert into est_compose_de (no_modele,no_piece) values ('101','300');
+insert into est_compose_de (no_modele,no_piece) values ('101','301');
+insert into est_compose_de (no_modele,no_piece) values ('101','307');
+insert into est_compose_de (no_modele,no_piece) values ('101','303');
+insert into est_compose_de (no_modele,no_piece) values ('101','304');
+insert into est_compose_de (no_modele,no_piece) values ('101','310');
+insert into est_compose_de (no_modele,no_piece) values ('101','317');
+insert into est_compose_de (no_modele,no_piece) values ('101','312');
+insert into est_compose_de (no_modele,no_piece) values ('101','314');
+insert into est_compose_de (no_modele,no_piece) values ('101','315');
 
-insert into est_compose_de (no_bicyclette,no_piece) values ('102','300');
-insert into est_compose_de (no_bicyclette,no_piece) values ('102','301');
-insert into est_compose_de (no_bicyclette,no_piece) values ('102','307');
-insert into est_compose_de (no_bicyclette,no_piece) values ('102','303');
-insert into est_compose_de (no_bicyclette,no_piece) values ('102','304');
-insert into est_compose_de (no_bicyclette,no_piece) values ('102','310');
-insert into est_compose_de (no_bicyclette,no_piece) values ('102','317');
-insert into est_compose_de (no_bicyclette,no_piece) values ('102','312');
-insert into est_compose_de (no_bicyclette,no_piece) values ('102','314');
-insert into est_compose_de (no_bicyclette,no_piece) values ('102','315');
+insert into est_compose_de (no_modele,no_piece) values ('102','300');
+insert into est_compose_de (no_modele,no_piece) values ('102','301');
+insert into est_compose_de (no_modele,no_piece) values ('102','307');
+insert into est_compose_de (no_modele,no_piece) values ('102','303');
+insert into est_compose_de (no_modele,no_piece) values ('102','304');
+insert into est_compose_de (no_modele,no_piece) values ('102','310');
+insert into est_compose_de (no_modele,no_piece) values ('102','317');
+insert into est_compose_de (no_modele,no_piece) values ('102','312');
+insert into est_compose_de (no_modele,no_piece) values ('102','314');
+insert into est_compose_de (no_modele,no_piece) values ('102','315');
 
-insert into est_compose_de (no_bicyclette,no_piece) values ('103','300');
-insert into est_compose_de (no_bicyclette,no_piece) values ('103','301');
-insert into est_compose_de (no_bicyclette,no_piece) values ('103','307');
-insert into est_compose_de (no_bicyclette,no_piece) values ('103','303');
-insert into est_compose_de (no_bicyclette,no_piece) values ('103','304');
-insert into est_compose_de (no_bicyclette,no_piece) values ('103','310');
-insert into est_compose_de (no_bicyclette,no_piece) values ('103','317');
-insert into est_compose_de (no_bicyclette,no_piece) values ('103','312');
-insert into est_compose_de (no_bicyclette,no_piece) values ('103','314');
-insert into est_compose_de (no_bicyclette,no_piece) values ('103','315');
+insert into est_compose_de (no_modele,no_piece) values ('103','300');
+insert into est_compose_de (no_modele,no_piece) values ('103','301');
+insert into est_compose_de (no_modele,no_piece) values ('103','307');
+insert into est_compose_de (no_modele,no_piece) values ('103','303');
+insert into est_compose_de (no_modele,no_piece) values ('103','304');
+insert into est_compose_de (no_modele,no_piece) values ('103','310');
+insert into est_compose_de (no_modele,no_piece) values ('103','317');
+insert into est_compose_de (no_modele,no_piece) values ('103','312');
+insert into est_compose_de (no_modele,no_piece) values ('103','314');
+insert into est_compose_de (no_modele,no_piece) values ('103','315');
 
-insert into est_compose_de (no_bicyclette,no_piece) values ('104','300');
-insert into est_compose_de (no_bicyclette,no_piece) values ('104','306');
-insert into est_compose_de (no_bicyclette,no_piece) values ('104','307');
-insert into est_compose_de (no_bicyclette,no_piece) values ('104','303');
-insert into est_compose_de (no_bicyclette,no_piece) values ('104','304');
-insert into est_compose_de (no_bicyclette,no_piece) values ('104','310');
-insert into est_compose_de (no_bicyclette,no_piece) values ('104','317');
-insert into est_compose_de (no_bicyclette,no_piece) values ('104','312');
-insert into est_compose_de (no_bicyclette,no_piece) values ('104','314');
-insert into est_compose_de (no_bicyclette,no_piece) values ('104','319');
+insert into est_compose_de (no_modele,no_piece) values ('104','300');
+insert into est_compose_de (no_modele,no_piece) values ('104','306');
+insert into est_compose_de (no_modele,no_piece) values ('104','307');
+insert into est_compose_de (no_modele,no_piece) values ('104','303');
+insert into est_compose_de (no_modele,no_piece) values ('104','304');
+insert into est_compose_de (no_modele,no_piece) values ('104','310');
+insert into est_compose_de (no_modele,no_piece) values ('104','317');
+insert into est_compose_de (no_modele,no_piece) values ('104','312');
+insert into est_compose_de (no_modele,no_piece) values ('104','314');
+insert into est_compose_de (no_modele,no_piece) values ('104','319');
 
-insert into est_compose_de (no_bicyclette,no_piece) values ('105','300');
-insert into est_compose_de (no_bicyclette,no_piece) values ('105','306');
-insert into est_compose_de (no_bicyclette,no_piece) values ('105','307');
-insert into est_compose_de (no_bicyclette,no_piece) values ('105','303');
-insert into est_compose_de (no_bicyclette,no_piece) values ('105','304');
-insert into est_compose_de (no_bicyclette,no_piece) values ('105','310');
-insert into est_compose_de (no_bicyclette,no_piece) values ('105','317');
-insert into est_compose_de (no_bicyclette,no_piece) values ('105','312');
-insert into est_compose_de (no_bicyclette,no_piece) values ('105','314');
-insert into est_compose_de (no_bicyclette,no_piece) values ('105','315');
+insert into est_compose_de (no_modele,no_piece) values ('105','300');
+insert into est_compose_de (no_modele,no_piece) values ('105','306');
+insert into est_compose_de (no_modele,no_piece) values ('105','307');
+insert into est_compose_de (no_modele,no_piece) values ('105','303');
+insert into est_compose_de (no_modele,no_piece) values ('105','304');
+insert into est_compose_de (no_modele,no_piece) values ('105','310');
+insert into est_compose_de (no_modele,no_piece) values ('105','317');
+insert into est_compose_de (no_modele,no_piece) values ('105','312');
+insert into est_compose_de (no_modele,no_piece) values ('105','314');
+insert into est_compose_de (no_modele,no_piece) values ('105','315');
 
-insert into est_compose_de (no_bicyclette,no_piece) values ('106','300');
-insert into est_compose_de (no_bicyclette,no_piece) values ('106','306');
-insert into est_compose_de (no_bicyclette,no_piece) values ('106','307');
-insert into est_compose_de (no_bicyclette,no_piece) values ('106','303');
-insert into est_compose_de (no_bicyclette,no_piece) values ('106','304');
-insert into est_compose_de (no_bicyclette,no_piece) values ('106','310');
-insert into est_compose_de (no_bicyclette,no_piece) values ('106','317');
-insert into est_compose_de (no_bicyclette,no_piece) values ('106','312');
-insert into est_compose_de (no_bicyclette,no_piece) values ('106','314');
-insert into est_compose_de (no_bicyclette,no_piece) values ('106','320');
+insert into est_compose_de (no_modele,no_piece) values ('106','300');
+insert into est_compose_de (no_modele,no_piece) values ('106','306');
+insert into est_compose_de (no_modele,no_piece) values ('106','307');
+insert into est_compose_de (no_modele,no_piece) values ('106','303');
+insert into est_compose_de (no_modele,no_piece) values ('106','304');
+insert into est_compose_de (no_modele,no_piece) values ('106','310');
+insert into est_compose_de (no_modele,no_piece) values ('106','317');
+insert into est_compose_de (no_modele,no_piece) values ('106','312');
+insert into est_compose_de (no_modele,no_piece) values ('106','314');
+insert into est_compose_de (no_modele,no_piece) values ('106','320');
 
-insert into est_compose_de (no_bicyclette,no_piece) values ('107','300');
-insert into est_compose_de (no_bicyclette,no_piece) values ('107','306');
-insert into est_compose_de (no_bicyclette,no_piece) values ('107','307');
-insert into est_compose_de (no_bicyclette,no_piece) values ('107','303');
-insert into est_compose_de (no_bicyclette,no_piece) values ('107','304');
-insert into est_compose_de (no_bicyclette,no_piece) values ('107','310');
-insert into est_compose_de (no_bicyclette,no_piece) values ('107','317');
-insert into est_compose_de (no_bicyclette,no_piece) values ('107','312');
-insert into est_compose_de (no_bicyclette,no_piece) values ('107','314');
-insert into est_compose_de (no_bicyclette,no_piece) values ('107','320');
+insert into est_compose_de (no_modele,no_piece) values ('107','300');
+insert into est_compose_de (no_modele,no_piece) values ('107','306');
+insert into est_compose_de (no_modele,no_piece) values ('107','307');
+insert into est_compose_de (no_modele,no_piece) values ('107','303');
+insert into est_compose_de (no_modele,no_piece) values ('107','304');
+insert into est_compose_de (no_modele,no_piece) values ('107','310');
+insert into est_compose_de (no_modele,no_piece) values ('107','317');
+insert into est_compose_de (no_modele,no_piece) values ('107','312');
+insert into est_compose_de (no_modele,no_piece) values ('107','314');
+insert into est_compose_de (no_modele,no_piece) values ('107','320');
 
-insert into est_compose_de (no_bicyclette,no_piece) values ('108','300');
-insert into est_compose_de (no_bicyclette,no_piece) values ('108','306');
-insert into est_compose_de (no_bicyclette,no_piece) values ('108','302');
-insert into est_compose_de (no_bicyclette,no_piece) values ('108','303');
-insert into est_compose_de (no_bicyclette,no_piece) values ('108','304');
-insert into est_compose_de (no_bicyclette,no_piece) values ('108','310');
-insert into est_compose_de (no_bicyclette,no_piece) values ('108','317');
-insert into est_compose_de (no_bicyclette,no_piece) values ('108','318');
-insert into est_compose_de (no_bicyclette,no_piece) values ('108','313');
-insert into est_compose_de (no_bicyclette,no_piece) values ('108','314');
+insert into est_compose_de (no_modele,no_piece) values ('108','300');
+insert into est_compose_de (no_modele,no_piece) values ('108','306');
+insert into est_compose_de (no_modele,no_piece) values ('108','302');
+insert into est_compose_de (no_modele,no_piece) values ('108','303');
+insert into est_compose_de (no_modele,no_piece) values ('108','304');
+insert into est_compose_de (no_modele,no_piece) values ('108','310');
+insert into est_compose_de (no_modele,no_piece) values ('108','317');
+insert into est_compose_de (no_modele,no_piece) values ('108','318');
+insert into est_compose_de (no_modele,no_piece) values ('108','313');
+insert into est_compose_de (no_modele,no_piece) values ('108','314');
 
-insert into est_compose_de (no_bicyclette,no_piece) values ('109','300');
-insert into est_compose_de (no_bicyclette,no_piece) values ('109','306');
-insert into est_compose_de (no_bicyclette,no_piece) values ('109','302');
-insert into est_compose_de (no_bicyclette,no_piece) values ('109','303');
-insert into est_compose_de (no_bicyclette,no_piece) values ('109','304');
-insert into est_compose_de (no_bicyclette,no_piece) values ('109','310');
-insert into est_compose_de (no_bicyclette,no_piece) values ('109','317');
-insert into est_compose_de (no_bicyclette,no_piece) values ('109','318');
-insert into est_compose_de (no_bicyclette,no_piece) values ('109','314');
-insert into est_compose_de (no_bicyclette,no_piece) values ('109','319');
+insert into est_compose_de (no_modele,no_piece) values ('109','300');
+insert into est_compose_de (no_modele,no_piece) values ('109','306');
+insert into est_compose_de (no_modele,no_piece) values ('109','302');
+insert into est_compose_de (no_modele,no_piece) values ('109','303');
+insert into est_compose_de (no_modele,no_piece) values ('109','304');
+insert into est_compose_de (no_modele,no_piece) values ('109','310');
+insert into est_compose_de (no_modele,no_piece) values ('109','317');
+insert into est_compose_de (no_modele,no_piece) values ('109','318');
+insert into est_compose_de (no_modele,no_piece) values ('109','314');
+insert into est_compose_de (no_modele,no_piece) values ('109','319');
 
-insert into est_compose_de (no_bicyclette,no_piece) values ('110','300');
-insert into est_compose_de (no_bicyclette,no_piece) values ('110','306');
-insert into est_compose_de (no_bicyclette,no_piece) values ('110','302');
-insert into est_compose_de (no_bicyclette,no_piece) values ('110','303');
-insert into est_compose_de (no_bicyclette,no_piece) values ('110','304');
-insert into est_compose_de (no_bicyclette,no_piece) values ('110','310');
-insert into est_compose_de (no_bicyclette,no_piece) values ('110','317');
-insert into est_compose_de (no_bicyclette,no_piece) values ('110','318');
-insert into est_compose_de (no_bicyclette,no_piece) values ('110','314');
-insert into est_compose_de (no_bicyclette,no_piece) values ('110','319');
+insert into est_compose_de (no_modele,no_piece) values ('110','300');
+insert into est_compose_de (no_modele,no_piece) values ('110','306');
+insert into est_compose_de (no_modele,no_piece) values ('110','302');
+insert into est_compose_de (no_modele,no_piece) values ('110','303');
+insert into est_compose_de (no_modele,no_piece) values ('110','304');
+insert into est_compose_de (no_modele,no_piece) values ('110','310');
+insert into est_compose_de (no_modele,no_piece) values ('110','317');
+insert into est_compose_de (no_modele,no_piece) values ('110','318');
+insert into est_compose_de (no_modele,no_piece) values ('110','314');
+insert into est_compose_de (no_modele,no_piece) values ('110','319');
 
-insert into est_compose_de (no_bicyclette,no_piece) values ('111','300');
-insert into est_compose_de (no_bicyclette,no_piece) values ('111','306');
-insert into est_compose_de (no_bicyclette,no_piece) values ('111','302');
-insert into est_compose_de (no_bicyclette,no_piece) values ('111','303');
-insert into est_compose_de (no_bicyclette,no_piece) values ('111','304');
-insert into est_compose_de (no_bicyclette,no_piece) values ('111','310');
-insert into est_compose_de (no_bicyclette,no_piece) values ('111','317');
-insert into est_compose_de (no_bicyclette,no_piece) values ('111','318');
-insert into est_compose_de (no_bicyclette,no_piece) values ('111','314');
-insert into est_compose_de (no_bicyclette,no_piece) values ('111','319');
+insert into est_compose_de (no_modele,no_piece) values ('111','300');
+insert into est_compose_de (no_modele,no_piece) values ('111','306');
+insert into est_compose_de (no_modele,no_piece) values ('111','302');
+insert into est_compose_de (no_modele,no_piece) values ('111','303');
+insert into est_compose_de (no_modele,no_piece) values ('111','304');
+insert into est_compose_de (no_modele,no_piece) values ('111','310');
+insert into est_compose_de (no_modele,no_piece) values ('111','317');
+insert into est_compose_de (no_modele,no_piece) values ('111','318');
+insert into est_compose_de (no_modele,no_piece) values ('111','314');
+insert into est_compose_de (no_modele,no_piece) values ('111','319');
 
-insert into est_compose_de (no_bicyclette,no_piece) values ('112','300');
-insert into est_compose_de (no_bicyclette,no_piece) values ('112','306');
-insert into est_compose_de (no_bicyclette,no_piece) values ('112','302');
-insert into est_compose_de (no_bicyclette,no_piece) values ('112','303');
-insert into est_compose_de (no_bicyclette,no_piece) values ('112','304');
-insert into est_compose_de (no_bicyclette,no_piece) values ('112','310');
-insert into est_compose_de (no_bicyclette,no_piece) values ('112','311');
-insert into est_compose_de (no_bicyclette,no_piece) values ('112','312');
-insert into est_compose_de (no_bicyclette,no_piece) values ('112','313');
-insert into est_compose_de (no_bicyclette,no_piece) values ('112','314');
+insert into est_compose_de (no_modele,no_piece) values ('112','300');
+insert into est_compose_de (no_modele,no_piece) values ('112','306');
+insert into est_compose_de (no_modele,no_piece) values ('112','302');
+insert into est_compose_de (no_modele,no_piece) values ('112','303');
+insert into est_compose_de (no_modele,no_piece) values ('112','304');
+insert into est_compose_de (no_modele,no_piece) values ('112','310');
+insert into est_compose_de (no_modele,no_piece) values ('112','311');
+insert into est_compose_de (no_modele,no_piece) values ('112','312');
+insert into est_compose_de (no_modele,no_piece) values ('112','313');
+insert into est_compose_de (no_modele,no_piece) values ('112','314');
 
-insert into est_compose_de (no_bicyclette,no_piece) values ('113','300');
-insert into est_compose_de (no_bicyclette,no_piece) values ('113','301');
-insert into est_compose_de (no_bicyclette,no_piece) values ('113','302');
-insert into est_compose_de (no_bicyclette,no_piece) values ('113','308');
-insert into est_compose_de (no_bicyclette,no_piece) values ('113','304');
-insert into est_compose_de (no_bicyclette,no_piece) values ('113','310');
-insert into est_compose_de (no_bicyclette,no_piece) values ('113','311');
-insert into est_compose_de (no_bicyclette,no_piece) values ('113','312');
-insert into est_compose_de (no_bicyclette,no_piece) values ('113','316');
-insert into est_compose_de (no_bicyclette,no_piece) values ('113','320');
+insert into est_compose_de (no_modele,no_piece) values ('113','300');
+insert into est_compose_de (no_modele,no_piece) values ('113','301');
+insert into est_compose_de (no_modele,no_piece) values ('113','302');
+insert into est_compose_de (no_modele,no_piece) values ('113','308');
+insert into est_compose_de (no_modele,no_piece) values ('113','304');
+insert into est_compose_de (no_modele,no_piece) values ('113','310');
+insert into est_compose_de (no_modele,no_piece) values ('113','311');
+insert into est_compose_de (no_modele,no_piece) values ('113','312');
+insert into est_compose_de (no_modele,no_piece) values ('113','316');
+insert into est_compose_de (no_modele,no_piece) values ('113','320');
 
-insert into est_compose_de (no_bicyclette,no_piece) values ('114','300');
-insert into est_compose_de (no_bicyclette,no_piece) values ('114','301');
-insert into est_compose_de (no_bicyclette,no_piece) values ('114','302');
-insert into est_compose_de (no_bicyclette,no_piece) values ('114','308');
-insert into est_compose_de (no_bicyclette,no_piece) values ('114','304');
-insert into est_compose_de (no_bicyclette,no_piece) values ('114','305');
-insert into est_compose_de (no_bicyclette,no_piece) values ('114','311');
-insert into est_compose_de (no_bicyclette,no_piece) values ('114','312');
-insert into est_compose_de (no_bicyclette,no_piece) values ('114','313');
-insert into est_compose_de (no_bicyclette,no_piece) values ('114','316');
+insert into est_compose_de (no_modele,no_piece) values ('114','300');
+insert into est_compose_de (no_modele,no_piece) values ('114','301');
+insert into est_compose_de (no_modele,no_piece) values ('114','302');
+insert into est_compose_de (no_modele,no_piece) values ('114','308');
+insert into est_compose_de (no_modele,no_piece) values ('114','304');
+insert into est_compose_de (no_modele,no_piece) values ('114','305');
+insert into est_compose_de (no_modele,no_piece) values ('114','311');
+insert into est_compose_de (no_modele,no_piece) values ('114','312');
+insert into est_compose_de (no_modele,no_piece) values ('114','313');
+insert into est_compose_de (no_modele,no_piece) values ('114','316');
 
-insert into est_compose_de (no_bicyclette,no_piece) values ('115','300');
-insert into est_compose_de (no_bicyclette,no_piece) values ('115','301');
-insert into est_compose_de (no_bicyclette,no_piece) values ('115','302');
-insert into est_compose_de (no_bicyclette,no_piece) values ('115','308');
-insert into est_compose_de (no_bicyclette,no_piece) values ('115','304');
-insert into est_compose_de (no_bicyclette,no_piece) values ('115','310');
-insert into est_compose_de (no_bicyclette,no_piece) values ('115','311');
-insert into est_compose_de (no_bicyclette,no_piece) values ('115','312');
-insert into est_compose_de (no_bicyclette,no_piece) values ('115','316');
-insert into est_compose_de (no_bicyclette,no_piece) values ('115','320');
+insert into est_compose_de (no_modele,no_piece) values ('115','300');
+insert into est_compose_de (no_modele,no_piece) values ('115','301');
+insert into est_compose_de (no_modele,no_piece) values ('115','302');
+insert into est_compose_de (no_modele,no_piece) values ('115','308');
+insert into est_compose_de (no_modele,no_piece) values ('115','304');
+insert into est_compose_de (no_modele,no_piece) values ('115','310');
+insert into est_compose_de (no_modele,no_piece) values ('115','311');
+insert into est_compose_de (no_modele,no_piece) values ('115','312');
+insert into est_compose_de (no_modele,no_piece) values ('115','316');
+insert into est_compose_de (no_modele,no_piece) values ('115','320');
 
-insert into est_compose_de (no_bicyclette,no_piece) values ('116','300');
-insert into est_compose_de (no_bicyclette,no_piece) values ('116','301');
-insert into est_compose_de (no_bicyclette,no_piece) values ('116','302');
-insert into est_compose_de (no_bicyclette,no_piece) values ('116','308');
-insert into est_compose_de (no_bicyclette,no_piece) values ('116','309');
-insert into est_compose_de (no_bicyclette,no_piece) values ('116','310');
-insert into est_compose_de (no_bicyclette,no_piece) values ('116','311');
-insert into est_compose_de (no_bicyclette,no_piece) values ('116','312');
-insert into est_compose_de (no_bicyclette,no_piece) values ('116','313');
-insert into est_compose_de (no_bicyclette,no_piece) values ('116','316');
+insert into est_compose_de (no_modele,no_piece) values ('116','300');
+insert into est_compose_de (no_modele,no_piece) values ('116','301');
+insert into est_compose_de (no_modele,no_piece) values ('116','302');
+insert into est_compose_de (no_modele,no_piece) values ('116','308');
+insert into est_compose_de (no_modele,no_piece) values ('116','309');
+insert into est_compose_de (no_modele,no_piece) values ('116','310');
+insert into est_compose_de (no_modele,no_piece) values ('116','311');
+insert into est_compose_de (no_modele,no_piece) values ('116','312');
+insert into est_compose_de (no_modele,no_piece) values ('116','313');
+insert into est_compose_de (no_modele,no_piece) values ('116','316');
 
-insert into est_compose_de (no_bicyclette,no_piece) values ('117','300');
-insert into est_compose_de (no_bicyclette,no_piece) values ('117','301');
-insert into est_compose_de (no_bicyclette,no_piece) values ('117','302');
-insert into est_compose_de (no_bicyclette,no_piece) values ('117','308');
-insert into est_compose_de (no_bicyclette,no_piece) values ('117','309');
-insert into est_compose_de (no_bicyclette,no_piece) values ('117','310');
-insert into est_compose_de (no_bicyclette,no_piece) values ('117','311');
-insert into est_compose_de (no_bicyclette,no_piece) values ('117','312');
-insert into est_compose_de (no_bicyclette,no_piece) values ('117','313');
-insert into est_compose_de (no_bicyclette,no_piece) values ('117','316');
+insert into est_compose_de (no_modele,no_piece) values ('117','300');
+insert into est_compose_de (no_modele,no_piece) values ('117','301');
+insert into est_compose_de (no_modele,no_piece) values ('117','302');
+insert into est_compose_de (no_modele,no_piece) values ('117','308');
+insert into est_compose_de (no_modele,no_piece) values ('117','309');
+insert into est_compose_de (no_modele,no_piece) values ('117','310');
+insert into est_compose_de (no_modele,no_piece) values ('117','311');
+insert into est_compose_de (no_modele,no_piece) values ('117','312');
+insert into est_compose_de (no_modele,no_piece) values ('117','313');
+insert into est_compose_de (no_modele,no_piece) values ('117','316');
 
 insert into adhere (id_ind,id_programme,date_adhesion) values ('3000','1','21/02/20');
 insert into adhere (id_ind,id_programme,date_adhesion) values ('3001','2','12/10/20');
@@ -585,22 +585,22 @@ UPDATE contact SET `siret_fournisseur`=NULL,`id_boutique`="4003" WHERE `id_conta
 SELECT quantite,no_piece from stock natural join estEn natural join piece group by no_piece;
 SELECT * from stock natural join estEn WHERE id_piece IS NOT NULL GROUP BY id_piece;
 SELECT quantite,siret_fournisseur FROM stock NATURAL JOIN estEn join piece on estEn.id_piece=piece.id_piece GROUP BY siret_fournisseur ;
-SELECT quantite,no_bicyclette FROM stock NATURAL JOIN estEn WHERE no_bicyclette IS NOT NULL GROUP BY no_bicyclette;
-SELECT SUM(quantite),nom_bicyclette FROM stock NATURAL JOIN estEn NATURAL JOIN bicyclette WHERE no_bicyclette IS NOT NULL GROUP BY nom_bicyclette;
-SELECT SUM(quantite),grandeur FROM stock NATURAL JOIN estEn NATURAL JOIN bicyclette WHERE no_bicyclette IS NOT NULL GROUP BY grandeur;
-SELECT SUM(quantite),ligne FROM stock NATURAL JOIN estEn NATURAL JOIN bicyclette WHERE no_bicyclette IS NOT NULL GROUP BY ligne;
-SELECT SUM(quantite),id_modele FROM stock NATURAL JOIN estEn NATURAL JOIN bicyclette NATURAL JOIn modele WHERE no_bicyclette IS NOT NULL GROUP BY id_modele;
-SELECT SUM(quantite),id_modele FROM stock NATURAL JOIN estEn NATURAL JOIN bicyclette GROUP BY prix_bicyclette;
+SELECT quantite,no_modele FROM stock NATURAL JOIN estEn WHERE no_modele IS NOT NULL GROUP BY no_modele;
+SELECT SUM(quantite),nom_vélo FROM stock NATURAL JOIN estEn NATURAL JOIN bicyclette WHERE no_modele IS NOT NULL GROUP BY nom_vélo;
+SELECT SUM(quantite),grandeur FROM stock NATURAL JOIN estEn NATURAL JOIN bicyclette WHERE no_modele IS NOT NULL GROUP BY grandeur;
+SELECT SUM(quantite),ligne_produit FROM stock NATURAL JOIN estEn NATURAL JOIN bicyclette WHERE no_modele IS NOT NULL GROUP BY ligne_produit;
+SELECT SUM(quantite),id_modele FROM stock NATURAL JOIN estEn NATURAL JOIN bicyclette NATURAL JOIn modele WHERE no_modele IS NOT NULL GROUP BY id_modele;
+SELECT SUM(quantite),id_modele FROM stock NATURAL JOIN estEn NATURAL JOIN bicyclette GROUP BY prix_vélo;
 
 SELECT id_piece FROM stock NATURAL JOIN estEn WHERE quantite='0' and id_piece IS NOT NULL;
 DELETE FROM fournisseur Where siret_fournisseur='506';
-select siret_fournisseur,no_piece,id_contact,nom_entreprise,no_bicyclette,prix_piece,delai_approvisionnement,quantite from fournisseur natural join piece natural join stock where quantite<='10';
-select siret_fournisseur, id_adresse, id_contact, nom_entreprise, libelle, no_piece, no_bicyclette, description_piece, no_produit, prix_piece, delai_approvisionnement, quantite from fournisseur natural join piece natural join stock where quantite <= '2';
+select siret_fournisseur,no_piece,id_contact,nom_entreprise,no_modele,prix_piece,delai_approvisionnement,quantite from fournisseur natural join piece natural join stock where quantite<='10';
+select siret_fournisseur, id_adresse, id_contact, nom_entreprise, libelle, no_piece, no_modele, description_piece, no_produit, prix_piece, delai_approvisionnement, quantite from fournisseur natural join piece natural join stock where quantite <= '2';
 select fournisseur.siret_fournisseur,count(*) from fournisseur, fournit, piece WHERE fournisseur.siret_fournisseur=fournit.siret_fournisseur and fournit.no_piece=piece.no_piece group by fournisseur.siret_fournisseur;
-select nom_client,sum(prix_piece),sum(prix_bicyclette) from ind_client, commande, contient, piece, modele_bicyclette where commande.id_ind=ind_client.id_ind and contient.no_commande=commande.no_commande and contient.no_bicyclette=modele_bicyclette.no_bicyclette and piece.no_piece=contient.no_piece group by nom_client;
-select nom_compagnie,sum(prix_piece),sum(prix_bicyclette) from commande, contient, piece, modele_bicyclette, boutique where boutique.id_boutique=commande.id_boutique and contient.no_commande=commande.no_commande and contient.no_bicyclette=modele_bicyclette.no_bicyclette and piece.no_piece=contient.no_piece group by boutique.nom_compagnie;
+select nom_client,sum(prix_piece),sum(prix_vélo) from ind_client, commande, contient, piece, vélo where commande.id_ind=ind_client.id_ind and contient.no_commande=commande.no_commande and contient.no_modele=vélo.no_modele and piece.no_piece=contient.no_piece group by nom_client;
+select nom_compagnie,sum(prix_piece),sum(prix_vélo) from commande, contient, piece, vélo, boutique where boutique.id_boutique=commande.id_boutique and contient.no_commande=commande.no_commande and contient.no_modele=vélo.no_modele and piece.no_piece=contient.no_piece group by boutique.nom_compagnie;
 select nom_compagnie,sum(prix_piece*quantite_piece) from commande, contient,piece, boutique where boutique.id_boutique=commande.id_boutique and contient.no_commande=commande.no_commande and piece.no_piece=contient.no_piece and contient.no_piece IS NOT NULL group by boutique.nom_compagnie;
-select nom_compagnie,sum(prix_bicyclette*quantite_bicyclette) from commande, contient,modele_bicyclette, boutique where boutique.id_boutique=commande.id_boutique and contient.no_commande=commande.no_commande and modele_bicyclette.no_bicyclette=contient.no_bicyclette and contient.no_bicyclette IS NOT NULL group by boutique.nom_compagnie;
+select nom_compagnie,sum(prix_vélo*quantite_bicyclette) from commande, contient,vélo, boutique where boutique.id_boutique=commande.id_boutique and contient.no_commande=commande.no_commande and vélo.no_modele=contient.no_modele and contient.no_modele IS NOT NULL group by boutique.nom_compagnie;
 
 
 
