@@ -1,0 +1,15 @@
+C:\Users\antoi\OneDrive\Bureau\velomax wpf\Velomax\bin\Debug\Velomax.exe.config
+C:\Users\antoi\OneDrive\Bureau\velomax wpf\Velomax\bin\Debug\Velomax.exe
+C:\Users\antoi\OneDrive\Bureau\velomax wpf\Velomax\bin\Debug\Velomax.pdb
+C:\Users\antoi\OneDrive\Bureau\velomax wpf\Velomax\obj\Debug\Velomax.csprojAssemblyReference.cache
+C:\Users\antoi\OneDrive\Bureau\velomax wpf\Velomax\obj\Debug\MainWindow.g.cs
+C:\Users\antoi\OneDrive\Bureau\velomax wpf\Velomax\obj\Debug\App.g.cs
+C:\Users\antoi\OneDrive\Bureau\velomax wpf\Velomax\obj\Debug\Velomax_MarkupCompile.cache
+C:\Users\antoi\OneDrive\Bureau\velomax wpf\Velomax\obj\Debug\Velomax_MarkupCompile.lref
+C:\Users\antoi\OneDrive\Bureau\velomax wpf\Velomax\obj\Debug\MainWindow.baml
+C:\Users\antoi\OneDrive\Bureau\velomax wpf\Velomax\obj\Debug\Velomax.g.resources
+C:\Users\antoi\OneDrive\Bureau\velomax wpf\Velomax\obj\Debug\Velomax.Properties.Resources.resources
+C:\Users\antoi\OneDrive\Bureau\velomax wpf\Velomax\obj\Debug\Velomax.csproj.GenerateResource.cache
+C:\Users\antoi\OneDrive\Bureau\velomax wpf\Velomax\obj\Debug\Velomax.csproj.CoreCompileInputs.cache
+C:\Users\antoi\OneDrive\Bureau\velomax wpf\Velomax\obj\Debug\Velomax.exe
+C:\Users\antoi\OneDrive\Bureau\velomax wpf\Velomax\obj\Debug\Velomax.pdb

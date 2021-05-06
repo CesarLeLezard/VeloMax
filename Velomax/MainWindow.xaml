@@ -11,5 +11,25 @@
             <ImageBrush ImageSource="vélo3.jpg" Stretch="UniformToFill"/>
         </Grid.Background>
         <Label x:Name="VeloMax" Content="VéloMax" HorizontalAlignment="Center" Height="90" Margin="245,30,233.6,0" VerticalAlignment="Top" Width="315" FontSize="72" FontFamily="Courier New" FontStyle="Italic"/>
+        <Button Content="Stock" HorizontalAlignment="Left" Height="60" Margin="135,163,0,0" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand">
+            <Button.Effect>
+                <DropShadowEffect Color="#FFC33F23"/>
+            </Button.Effect>
+        </Button>
+        <Button Content="Clients" HorizontalAlignment="Left" Height="60" Margin="135,280,0,0" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand">
+            <Button.Effect>
+                <DropShadowEffect Color="#FFC33F23"/>
+            </Button.Effect>
+        </Button>
+        <Button Content="Fournisseur" HorizontalAlignment="Left" Height="60" Margin="415,163,0,0" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand">
+            <Button.Effect>
+                <DropShadowEffect Color="#FFC33F23"/>
+            </Button.Effect>
+        </Button>
+        <Button Content="Commandes" HorizontalAlignment="Left" Height="60" Margin="415,280,0,0" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand">
+            <Button.Effect>
+                <DropShadowEffect Color="#FFC33F23"/>
+            </Button.Effect>
+        </Button>
     </Grid>
 </Window>
