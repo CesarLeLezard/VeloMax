@@ -7,6 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.Background>
+            <ImageBrush ImageSource="vélo3.jpg" Stretch="UniformToFill"/>
+        </Grid.Background>
+        <Label x:Name="VeloMax" Content="VéloMax" HorizontalAlignment="Center" Height="90" Margin="245,30,233.6,0" VerticalAlignment="Top" Width="315" FontSize="72" FontFamily="Courier New" FontStyle="Italic"/>
     </Grid>
 </Window>
