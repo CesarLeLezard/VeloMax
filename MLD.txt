@@ -1,0 +1,30 @@
+-qualite (note_qualite, libelle_qualite)
+
+-piece (id_piece, description_piece, dateIntro_piece, dateDisc_piece, stock_piece, #id_descript)
+
+-modele (id_modele, nom_modele, prix_modele, dateIntro_modele, dateDisc_modele, stock_modele, #id_grandeur, #id_ligne)
+
+-commande (id_commande, date_commande, adresseLivraison_commande, codePLivraison_commande, villeLivraison_commande, dateLivraison_commande, #id_clientbou, #id_clientind)
+
+-clientInd (id_clientInd, nom_clientInd, prenom_clientInd, adresse_clientInd, codeP_clientInd, ville_clientInd, tel_clientInd, mail_clientInd, #type_fidelio)
+
+-clientBou (id_clientBou, nom_clientBou, adresse_clientBou, codeP_clientBou, ville_clientBou, tel_clientBou, mail_clientBou, nomContact_clientBou, #type_fidelio)
+
+-fidelio (type_fidelio, description_fidelio, cout_fidelio, duree_fidelio, rabais_fidelio)
+
+-grandeur (id_grandeur, libelle_grandeur)
+
+-ligneProduit (id_ligne, libelle_ligne)
+
+-descript (id_descript, libelle_descript)
+
+-fournisseur (siret_fourn, nom_fourn, tel_fourn, mail_fourn, adresse_fourn, codeP_fourn, ville_fourn, #note_qualite)
+
+-fournit (id_piece, siret_fourn, prix_fournit, delai_fournit, numCatalogue_fournit)
+
+-compose (id_piece, id_modele)
+
+-contientPiece (id_commande, id_piece, quantite_contientPiece)
+
+-contientModele (id_modele, id_commande, quantite_contientModele)
+
