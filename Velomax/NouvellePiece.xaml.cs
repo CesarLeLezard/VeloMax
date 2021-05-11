@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace Velomax
 {
     /// <summary>
-    /// Logique d'interaction pour Stock.xaml
+    /// Logique d'interaction pour NouvellePiece.xaml
     /// </summary>
-    public partial class Stock : Window
+    public partial class NouvellePiece : Window
     {
-        public Stock()
+        public NouvellePiece()
         {
             InitializeComponent();
         }

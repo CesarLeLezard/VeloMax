@@ -56,8 +56,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Stock.xaml.cs">
-      <DependentUpon>Stock.xaml</DependentUpon>
+    <Compile Include="NouvellePiece.xaml.cs">
+      <DependentUpon>NouvellePiece.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StockPieces.xaml.cs">
+      <DependentUpon>StockPieces.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StockVelos.xaml.cs">
+      <DependentUpon>StockVelos.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -71,7 +77,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Stock.xaml">
+    <Page Include="NouvellePiece.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StockPieces.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StockVelos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -94,7 +108,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="bicycle_sports_drawing_minimalism-643361.jpg!d" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -104,22 +117,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="vélo.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="vélo2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="vélo3.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Image1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="boites.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="boites.jpg" />
+    <Resource Include="boite.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
