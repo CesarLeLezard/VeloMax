@@ -5,31 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Velomax"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Grid.Background>
+        Title="Accueil" Height="450" Width="860" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+    <Canvas>
+        <Canvas.Background>
             <ImageBrush ImageSource="vélo3.jpg" Stretch="UniformToFill"/>
-        </Grid.Background>
-        <Label x:Name="VeloMax" Content="VéloMax" HorizontalAlignment="Center" Height="90" Margin="245,30,233.6,0" VerticalAlignment="Top" Width="315" FontSize="72" FontFamily="Courier New" FontStyle="Italic"/>
-        <Button Content="Stock" HorizontalAlignment="Left" Height="60" Margin="135,163,0,0" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Click="Button_Click">
+        </Canvas.Background>
+        <Label x:Name="VeloMax" Content="VéloMax" HorizontalAlignment="Center" Height="90" VerticalAlignment="Top" Width="823" FontSize="72" FontFamily="Courier New" FontStyle="Italic" Grid.Column="1" Canvas.Left="11" Canvas.Top="19" HorizontalContentAlignment="Center"/>
+        <Button x:Name="bStockPieces" Content="Stock pièces" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Click="OuvrirStockPieces" Grid.Column="1" Canvas.Left="44" Canvas.Top="292">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
-        <Button Content="Clients" HorizontalAlignment="Left" Height="60" Margin="135,280,0,0" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand">
+        <Button x:Name="bClients" Content="Clients" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Grid.Column="1" Canvas.Left="321" Canvas.Top="292">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
-        <Button Content="Fournisseur" HorizontalAlignment="Left" Height="60" Margin="415,163,0,0" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand">
+        <Button x:Name="bFournisseurs" Content="Fournisseurs" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Grid.Column="1" Canvas.Left="321" Canvas.Top="172">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
-        <Button Content="Commandes" HorizontalAlignment="Left" Height="60" Margin="415,280,0,0" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand">
+        <Button x:Name="bCommandes" Content="Commandes" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Grid.Column="1" Canvas.Left="589" Canvas.Top="172">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
-    </Grid>
+        <Button x:Name="bStockVelos" Content="Stock vélos" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Click="OuvrirStockVelos" Canvas.Left="44" Canvas.Top="172">
+            <Button.Effect>
+                <DropShadowEffect Color="#FFC33F23"/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="bAutre" Content="Autre" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="589" Canvas.Top="292">
+            <Button.Effect>
+                <DropShadowEffect Color="#FFC33F23"/>
+            </Button.Effect>
+        </Button>
+    </Canvas>
 </Window>
