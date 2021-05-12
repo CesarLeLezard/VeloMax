@@ -5,39 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Velomax"
         mc:Ignorable="d"
-        Title="Nouvelle pièce" Height="420" Width="1100" Background="#FFD9D9D9" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+        Title="Nouvelle pièce" Height="530" Width="1100" Background="#FFD9D9D9" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Canvas>
         <TextBox x:Name="tbIdPiece" Height="34" Canvas.Left="166" TextWrapping="Wrap" Canvas.Top="57" Width="89" FontSize="18" VerticalContentAlignment="Center" Padding="5,0,0,0"/>
         <Label Content="ID pièce :" Canvas.Left="50" Canvas.Top="57" Width="88" FontSize="18"/>
         <Label Content="Catégorie :" Canvas.Left="50" Canvas.Top="128" Width="100" FontSize="18"/>
         <ComboBox x:Name="cbCategories" Canvas.Left="166" Canvas.Top="128" Width="190" FontSize="18" Height="34"/>
-        <DatePicker x:Name="dpDateIntro" Canvas.Left="895" Canvas.Top="220" FontSize="18" Width="138"/>
-        <DatePicker x:Name="dpDateDisc" Canvas.Left="895" Canvas.Top="296" FontSize="18" Width="138" RenderTransformOrigin="0.775,3.688"/>
-        <TextBox x:Name="tbQuantite" Height="34" Canvas.Left="166" TextWrapping="Wrap" Canvas.Top="295" Width="69" FontSize="18" VerticalContentAlignment="Center" Padding="0,0,5,0" HorizontalContentAlignment="Right"/>
+        <DatePicker x:Name="dpDateIntro" Canvas.Left="907" Canvas.Top="220" FontSize="18" Width="138"/>
+        <DatePicker x:Name="dpDateDisc" Canvas.Left="907" Canvas.Top="296" FontSize="18" Width="138" RenderTransformOrigin="0.775,3.688"/>
+        <TextBox x:Name="tbQuantite" Height="34" Canvas.Left="178" TextWrapping="Wrap" Canvas.Top="295" Width="69" FontSize="18" VerticalContentAlignment="Center" Padding="0,0,5,0" HorizontalContentAlignment="Right"/>
         <Label Content="Quantité :" Canvas.Left="50" Canvas.Top="295" Width="88" FontSize="18"/>
-        <TextBox x:Name="tbPrix" Height="34" Canvas.Left="166" TextWrapping="Wrap" Canvas.Top="219" Width="69" FontSize="18" VerticalContentAlignment="Center" Padding="0,0,5,0" HorizontalContentAlignment="Right"/>
-        <Label Content="Prix unitaire :" Canvas.Left="50" Canvas.Top="219" Width="116" FontSize="18"/>
-        <Label Content="€" Canvas.Left="240" Canvas.Top="219" Width="25" FontSize="18"/>
-        <TextBox x:Name="tbDelai" Height="34" Canvas.Left="523" TextWrapping="Wrap" Canvas.Top="295" Width="69" FontSize="18" VerticalContentAlignment="Center" Padding="0,0,5,0" HorizontalContentAlignment="Right"/>
-        <Label Content="Délai de livraison :" Canvas.Left="362" Canvas.Top="295" Width="154" FontSize="18"/>
-        <Label Content="jour(s)" Canvas.Left="597" Canvas.Top="295" Width="60" FontSize="18"/>
-        <Label Content="Fournisseur :" Canvas.Left="495" Canvas.Top="59" Width="111" FontSize="18"/>
-        <ComboBox x:Name="cbCategories_Copy" Canvas.Left="611" Canvas.Top="59" Width="216" FontSize="18" Height="34"/>
-        <Label Content="pièce(s)" Canvas.Left="240" Canvas.Top="295" Width="73" FontSize="18"/>
-        <TextBox x:Name="tbPrixFourn" Height="34" Canvas.Left="523" TextWrapping="Wrap" Canvas.Top="219" Width="69" FontSize="18" VerticalContentAlignment="Center" Padding="0,0,5,0" HorizontalContentAlignment="Right"/>
-        <Label Content="Prix fournisseur :" Canvas.Left="362" Canvas.Top="219" Width="142" FontSize="18"/>
-        <Label Content="€" Canvas.Left="597" Canvas.Top="219" Width="26" FontSize="18"/>
-        <Button x:Name="bNvFourn" Content="Nouveau" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="114" FontSize="22" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="845" Canvas.Top="59">
+        <TextBox x:Name="tbPrix" Height="34" Canvas.Left="178" TextWrapping="Wrap" Canvas.Top="220" Width="69" FontSize="18" VerticalContentAlignment="Center" Padding="0,0,5,0" HorizontalContentAlignment="Right"/>
+        <Label Content="Prix VéloMax :" Canvas.Left="50" Canvas.Top="219" Width="123" FontSize="18"/>
+        <Label Content="€" Canvas.Left="252" Canvas.Top="220" Width="26" FontSize="18"/>
+        <TextBox x:Name="tbDelai" Height="34" Canvas.Left="527" TextWrapping="Wrap" Canvas.Top="295" Width="69" FontSize="18" VerticalContentAlignment="Center" Padding="0,0,5,0" HorizontalContentAlignment="Right"/>
+        <Label Content="Délai de livraison :" Canvas.Left="366" Canvas.Top="295" Width="154" FontSize="18"/>
+        <Label Content="jour(s)" Canvas.Left="601" Canvas.Top="295" Width="60" FontSize="18"/>
+        <Label Content="Fournisseur :" Canvas.Left="451" Canvas.Top="59" Width="111" FontSize="18"/>
+        <ComboBox x:Name="cbFournisseurs" Canvas.Left="567" Canvas.Top="59" Width="216" FontSize="18" Height="34"/>
+        <Label Content="pièce(s)" Canvas.Left="252" Canvas.Top="295" Width="73" FontSize="18"/>
+        <TextBox x:Name="tbPrixFourn" Height="34" Canvas.Left="527" TextWrapping="Wrap" Canvas.Top="219" Width="69" FontSize="18" VerticalContentAlignment="Center" Padding="0,0,5,0" HorizontalContentAlignment="Right"/>
+        <Label Content="Prix fournisseur :" Canvas.Left="366" Canvas.Top="219" Width="142" FontSize="18"/>
+        <Label Content="€" Canvas.Left="601" Canvas.Top="219" Width="26" FontSize="18"/>
+        <Button x:Name="bNvFourn" Content="Nouveau" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="114" FontSize="22" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="801" Canvas.Top="59">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
-        <TextBox x:Name="tbNumCatalogue" Height="34" Canvas.Left="870" TextWrapping="Wrap" Canvas.Top="128" Width="89" FontSize="18" VerticalContentAlignment="Center" Padding="5,0,0,0"/>
-        <Label Content="N° du produit dans le catalogue fournisseur :" Canvas.Left="495" Canvas.Top="128" Width="370" FontSize="18"/>
-        <Border BorderBrush="#FF7C7C7C" BorderThickness="1" Height="105" Canvas.Left="429" Canvas.Top="57" Width="1"/>
-        <Label Content="Début de production :" Canvas.Left="703" Canvas.Top="219" Width="187" FontSize="18"/>
-        <Label Content="Fin de production :" Canvas.Left="703" Canvas.Top="295" Width="187" FontSize="18"/>
-        <Border BorderBrush="#FF7C7C7C" BorderThickness="1" Height="110" Canvas.Left="338" Canvas.Top="219" Width="1"/>
-        <Border BorderBrush="#FF7C7C7C" BorderThickness="1" Height="110" Canvas.Left="679" Canvas.Top="219" Width="1"/>
+        <TextBox x:Name="tbNumCatalogue" Height="34" Canvas.Left="826" TextWrapping="Wrap" Canvas.Top="128" Width="89" FontSize="18" VerticalContentAlignment="Center" Padding="5,0,0,0"/>
+        <Label Content="N° du produit dans le catalogue fournisseur :" Canvas.Left="451" Canvas.Top="128" Width="370" FontSize="18"/>
+        <Border BorderBrush="#FF7C7C7C" BorderThickness="1" Height="105" Canvas.Left="404" Canvas.Top="57" Width="1"/>
+        <Label Content="Début de production :" Canvas.Left="715" Canvas.Top="219" Width="187" FontSize="18"/>
+        <Label Content="Fin de production :" Canvas.Left="715" Canvas.Top="295" Width="187" FontSize="18"/>
+        <Border BorderBrush="#FF7C7C7C" BorderThickness="1" Height="110" Canvas.Left="346" Canvas.Top="219" Width="1"/>
+        <Border BorderBrush="#FF7C7C7C" BorderThickness="1" Height="110" Canvas.Left="688" Canvas.Top="219" Width="1"/>
+        <Button x:Name="bValider" Content="Valider" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="210" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="445" Canvas.Top="390" Click="bValider_Click">
+            <Button.Effect>
+                <DropShadowEffect Color="#FFC33F23"/>
+            </Button.Effect>
+        </Button>
+        <Image Height="105" Canvas.Left="971" Canvas.Top="57" Width="78" Source="engrenages.png"/>
     </Canvas>
 </Window>

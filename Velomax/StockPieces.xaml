@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Stock" Height="700" Width="1200" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Canvas Background="#FFD9D9D9">
-        <Label x:Name="lTitre" Content="Stock" HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="1104" FontFamily="Courier New" FontSize="72" Foreground="#FFC33F23" BorderBrush="#FF299ACF" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Canvas.Left="10" Canvas.Top="36" HorizontalContentAlignment="Center">
+        <Label x:Name="lTitre" Content="Stock" HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="1174" FontFamily="Courier New" FontSize="72" Foreground="#FFC33F23" BorderBrush="#FF299ACF" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Canvas.Left="10" Canvas.Top="36" HorizontalContentAlignment="Center">
             <Label.Effect>
                 <DropShadowEffect Color="#FF198397"/>
             </Label.Effect>
@@ -25,7 +25,7 @@
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
-        <DataGrid x:Name="dgPieces" Height="384" Canvas.Left="62" Canvas.Top="218" Width="771" AutoGenerateColumns="False" FontSize="16" HorizontalGridLinesBrush="#FFB6B6B6" VerticalGridLinesBrush="#FFB6B6B6">
+        <DataGrid x:Name="dgPieces" Height="384" Canvas.Left="62" Canvas.Top="218" Width="783" AutoGenerateColumns="False" FontSize="16" HorizontalGridLinesBrush="#FFB6B6B6" VerticalGridLinesBrush="#FFB6B6B6">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID pièce" Binding="{Binding id_piece}" Width="100" IsReadOnly="True">
                     <DataGridTextColumn.HeaderStyle>
@@ -101,7 +101,7 @@
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Image x:Name="lBoite" Height="159" Canvas.Left="835" Canvas.Top="10" Width="241" Source="boite.jpg"/>
+        <Image x:Name="lBoite" Height="159" Canvas.Left="895" Canvas.Top="10" Width="240" Source="boite.jpg"/>
         <Button x:Name="bDetailsPiece" Content="Détails" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="895" Canvas.Top="369">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
