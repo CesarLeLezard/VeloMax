@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Stock" Height="700" Width="1400" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Canvas Background="#FFD9D9D9">
-        <DataGrid x:Name="dgVelos" Height="406" Canvas.Left="64" Canvas.Top="211" Width="980" AutoGenerateColumns="False" FontSize="16" HorizontalGridLinesBrush="#FFB6B6B6" VerticalGridLinesBrush="#FFB6B6B6">
+        <DataGrid x:Name="dgVelos" Height="406" Canvas.Left="64" Canvas.Top="211" Width="989" AutoGenerateColumns="False" FontSize="16" HorizontalGridLinesBrush="#FFB6B6B6" VerticalGridLinesBrush="#FFB6B6B6">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID modèle" Binding="{Binding id_modele}" Width="100" IsReadOnly="True">
                     <DataGridTextColumn.HeaderStyle>
@@ -42,7 +42,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Prix " Binding="{Binding prix_modele}" Width="70" IsReadOnly="True">
+                <DataGridTextColumn Header="Prix " Binding="{Binding prix_modele}" Width="90" IsReadOnly="True">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="{x:Type DataGridColumnHeader}">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -122,18 +122,18 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
-        <Image x:Name="lBoite" Height="159" Canvas.Left="1096" Canvas.Top="10" Width="241" Source="boite.jpg"/>
-        <Button x:Name="bNvVelo" Content="Nouveau vélo" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="1096" Canvas.Top="260">
+        <Image x:Name="lBoite" Height="159" Canvas.Left="1101" Canvas.Top="30" Width="241" Source="boite.jpg"/>
+        <Button x:Name="bNvVelo" Content="Nouveau vélo" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="1101" Canvas.Top="260">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="bDetailsPiece" Content="Détails" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="1097" Canvas.Top="375">
+        <Button x:Name="bDetailsPiece" Content="Détails" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="1102" Canvas.Top="375">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="bSupprimer" Content="Supprimer" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="1097" Canvas.Top="488">
+        <Button x:Name="bSupprimer" Content="Supprimer" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="1102" Canvas.Top="488">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>

@@ -37,18 +37,19 @@ namespace Velomax
             maConnexion.Open();
 
             MySqlCommand command = maConnexion.CreateCommand();
-            command.CommandText = "SELECT id_piece, lib_categorie, dateIntro_piece, dateDisc_piece, stock_piece FROM piece NATURAL JOIN categorie ORDER BY id_piece;";
+            command.CommandText = "SELECT id_piece, lib_categorie, prix_piece, dateIntro_piece, dateDisc_piece, stock_piece FROM piece NATURAL JOIN categorie ORDER BY id_piece;";
 
             DataTable dt = new DataTable();
             dt.Load(command.ExecuteReader());
             dgPieces.ItemsSource = dt.DefaultView;
 
-            // maConnexion.Close();
+            maConnexion.Close();
         }
 
         private void bNvPiece_Click(object sender, RoutedEventArgs e)
         {
-
+            NouvellePiece windowNvPiece = new NouvellePiece(maConnexion);
+            windowNvPiece.Show();
         }
     }
 }
