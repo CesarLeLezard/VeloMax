@@ -34,7 +34,7 @@
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Catégorie" Binding="{Binding lib_categorie}" Width="170" IsReadOnly="True">
+                <DataGridTextColumn Header="Catégorie" Binding="{Binding lib_categorie}" Width="160" IsReadOnly="True">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -107,7 +107,7 @@
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="bSupprimer" Content="Supprimer" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="895" Canvas.Top="483">
+        <Button x:Name="bSupprimer" Content="Supprimer" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="895" Canvas.Top="483" Click="bSupprimer_Click">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
