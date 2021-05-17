@@ -56,6 +56,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DetailsPiece.xaml.cs">
+      <DependentUpon>DetailsPiece.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Fournisseurs.xaml.cs">
+      <DependentUpon>Fournisseurs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NouvellePiece.xaml.cs">
       <DependentUpon>NouvellePiece.xaml</DependentUpon>
     </Compile>
@@ -65,6 +71,14 @@
     <Compile Include="StockVelos.xaml.cs">
       <DependentUpon>StockVelos.xaml</DependentUpon>
     </Compile>
+    <Page Include="DetailsPiece.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Fournisseurs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -117,13 +131,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="vélo3.jpg" />
+    <Resource Include="images\vélo3.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="boite.jpg" />
+    <Resource Include="images\boite.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="engrenages.png" />
+    <Resource Include="images\engrenages.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

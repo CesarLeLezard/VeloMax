@@ -60,5 +60,11 @@ namespace Velomax
             StockVelos windowStock = new StockVelos(maConnexion);
             windowStock.Show();
         }
+
+        private void bFournisseurs_Click(object sender, RoutedEventArgs e)
+        {
+            Fournisseurs windowFournisseurs = new Fournisseurs(maConnexion);
+            windowFournisseurs.Show();
+        }
     }
 }

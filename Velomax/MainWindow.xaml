@@ -8,7 +8,7 @@
         Title="Accueil" Height="450" Width="860" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
     <Canvas>
         <Canvas.Background>
-            <ImageBrush ImageSource="vélo3.jpg" Stretch="UniformToFill"/>
+            <ImageBrush ImageSource="images/vélo3.jpg" Stretch="UniformToFill"/>
         </Canvas.Background>
         <Label x:Name="VeloMax" Content="VéloMax" HorizontalAlignment="Center" Height="90" VerticalAlignment="Top" Width="823" FontSize="72" FontFamily="Courier New" FontStyle="Italic" Grid.Column="1" Canvas.Left="11" Canvas.Top="19" HorizontalContentAlignment="Center"/>
         <Button x:Name="bStockPieces" Content="Stock pièces" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Click="OuvrirStockPieces" Grid.Column="1" Canvas.Left="44" Canvas.Top="292">
@@ -21,7 +21,7 @@
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="bFournisseurs" Content="Fournisseurs" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Grid.Column="1" Canvas.Left="321" Canvas.Top="172">
+        <Button x:Name="bFournisseurs" Content="Fournisseurs" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Grid.Column="1" Canvas.Left="321" Canvas.Top="172" Click="bFournisseurs_Click">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>

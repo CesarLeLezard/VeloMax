@@ -43,6 +43,7 @@ namespace Velomax
 
                 DataTable dt = new DataTable();
                 dt.Load(command.ExecuteReader());
+                command.Dispose();
                 dgPieces.ItemsSource = dt.DefaultView;
             }
             catch (MySqlException erreur)
@@ -103,5 +104,24 @@ namespace Velomax
 
         }
 
+        private void bDetails_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgPieces.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Sélectionnez une pièce");
+            }
+            else
+            {
+                string idPiece = "";
+
+                foreach (DataRowView ligne in dgPieces.SelectedItems)
+                {
+                    idPiece = ligne.Row.Field<string>(0); // récupération de l'id pièce
+
+                    DetailsPiece windowDetailsPiece = new DetailsPiece(maConnexion, this, idPiece);
+                    windowDetailsPiece.Show();
+                }
+            }
+        }
     }
 }

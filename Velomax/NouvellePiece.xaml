@@ -10,7 +10,7 @@
         <TextBox x:Name="tbIdPiece" Height="34" Canvas.Left="166" TextWrapping="Wrap" Canvas.Top="57" Width="89" FontSize="18" VerticalContentAlignment="Center" Padding="5,0,0,0"/>
         <Label Content="ID pièce :" Canvas.Left="50" Canvas.Top="57" Width="88" FontSize="18"/>
         <Label Content="Catégorie :" Canvas.Left="50" Canvas.Top="128" Width="100" FontSize="18"/>
-        <ComboBox x:Name="cbCategories" Canvas.Left="166" Canvas.Top="128" Width="190" FontSize="18" Height="34"/>
+        <ComboBox x:Name="cbCategories" Canvas.Left="166" Canvas.Top="128" Width="190" FontSize="18" Height="34" SelectionChanged="cbCategories_SelectionChanged"/>
         <DatePicker x:Name="dpDateIntro" Canvas.Left="907" Canvas.Top="220" FontSize="18" Width="138"/>
         <DatePicker x:Name="dpDateDisc" Canvas.Left="907" Canvas.Top="296" FontSize="18" Width="138" RenderTransformOrigin="0.775,3.688"/>
         <TextBox x:Name="tbQuantite" Height="34" Canvas.Left="178" TextWrapping="Wrap" Canvas.Top="295" Width="69" FontSize="18" VerticalContentAlignment="Center" Padding="0,0,5,0" HorizontalContentAlignment="Right"/>
@@ -21,13 +21,13 @@
         <TextBox x:Name="tbDelai" Height="34" Canvas.Left="527" TextWrapping="Wrap" Canvas.Top="295" Width="69" FontSize="18" VerticalContentAlignment="Center" Padding="0,0,5,0" HorizontalContentAlignment="Right"/>
         <Label Content="Délai de livraison :" Canvas.Left="366" Canvas.Top="295" Width="154" FontSize="18"/>
         <Label Content="jour(s)" Canvas.Left="601" Canvas.Top="295" Width="60" FontSize="18"/>
-        <Label Content="Fournisseur :" Canvas.Left="451" Canvas.Top="59" Width="111" FontSize="18"/>
-        <ComboBox x:Name="cbFournisseurs" Canvas.Left="567" Canvas.Top="59" Width="216" FontSize="18" Height="34"/>
+        <Label Content="Fournisseur :" Canvas.Left="451" Canvas.Top="57" Width="111" FontSize="18"/>
+        <ComboBox x:Name="cbFournisseurs" Canvas.Left="567" Canvas.Top="57" Width="216" FontSize="18" Height="34"/>
         <Label Content="pièce(s)" Canvas.Left="252" Canvas.Top="295" Width="73" FontSize="18"/>
         <TextBox x:Name="tbPrixFourn" Height="34" Canvas.Left="527" TextWrapping="Wrap" Canvas.Top="219" Width="69" FontSize="18" VerticalContentAlignment="Center" Padding="0,0,5,0" HorizontalContentAlignment="Right"/>
         <Label Content="Prix fournisseur :" Canvas.Left="366" Canvas.Top="219" Width="142" FontSize="18"/>
         <Label Content="€" Canvas.Left="601" Canvas.Top="219" Width="26" FontSize="18"/>
-        <Button x:Name="bNvFourn" Content="Nouveau" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="114" FontSize="22" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="801" Canvas.Top="59">
+        <Button x:Name="bNvFourn" Content="Nouveau" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="114" FontSize="22" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="801" Canvas.Top="57">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
@@ -44,6 +44,7 @@
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
-        <Image Height="105" Canvas.Left="971" Canvas.Top="57" Width="78" Source="engrenages.png"/>
+        <Image Height="105" Canvas.Left="971" Canvas.Top="57" Width="78" Source="images/engrenages.png"/>
+        <CheckBox x:Name="cbAuto" Content="ID auto" Canvas.Left="272" Canvas.Top="57" FontSize="18" VerticalContentAlignment="Center" Height="34" Width="84" Padding="5,-1,0,0" IsChecked="True" Click="cbAuto_Click"/>
     </Canvas>
 </Window>
