@@ -12,6 +12,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Velomax.modules;
 
 namespace Velomax
 {
@@ -40,73 +41,18 @@ namespace Velomax
         private void InitCategories()
         {
             categories = new SortedList<int, string>();
-
-            try
-            {
-                maConnexion.Open();
-
-                MySqlCommand command = maConnexion.CreateCommand();
-                command.CommandText = "SELECT id_categorie, lib_categorie FROM categorie ORDER BY lib_categorie;";
-
-                MySqlDataReader reader;
-                reader = command.ExecuteReader();
-
-                int idCategorie;
-                string libCategorie;
-
-                while (reader.Read())   // parcours ligne par ligne
-                {
-                    idCategorie = reader.GetInt32(0); // récupération 1ère colonne contenant les id_categorie
-                    libCategorie = reader.GetString(1); // récupération 2ème colonne contenant les libellés des catégories
-                    categories.Add(idCategorie, libCategorie);
-                }
-                cbCategories.ItemsSource = categories.Values;
-            }
-            catch (MySqlException erreur)
-            {
-                MessageBox.Show("Erreur de requête SQL :\n" + erreur);
-            }
-            finally
-            {
-                maConnexion.Close();
-            }
+            string requete = "SELECT id_categorie, lib_categorie FROM categorie;";
+            RemplirComboBox<int, string>.RemplirCategories(maConnexion, requete, cbCategories, categories);
         }
 
         private void InitFournisseurs()
         {
             fournisseurs = new SortedList<string, string>();
-
-            try
-            {
-                maConnexion.Open();
-
-                MySqlCommand command = maConnexion.CreateCommand();
-                command.CommandText = "SELECT siret_fourn, nom_fourn FROM fournisseur ORDER BY nom_fourn;";
-
-                MySqlDataReader reader;
-                reader = command.ExecuteReader();
-
-                string siretFournisseur;
-                string nomFournisseur;
-
-                while (reader.Read())   // parcours ligne par ligne
-                {
-                    siretFournisseur = reader.GetString(0); // récupération 1ère colonne contenant les siret des fournisseurs
-                    nomFournisseur = reader.GetString(1); // récupération 2ème colonne contenant les noms des fournisseurs
-                    fournisseurs.Add(siretFournisseur, nomFournisseur);
-                }
-                cbFournisseurs.ItemsSource = fournisseurs.Values;
-            }
-            catch (MySqlException erreur)
-            {
-                MessageBox.Show("Erreur de requête SQL :\n" + erreur);
-            }
-            finally
-            {
-                maConnexion.Close();
-            }
+            string requete = "SELECT siret_fourn, nom_fourn FROM fournisseur";
+            RemplirComboBox<string, string>.RemplirFournisseurs(maConnexion, requete, cbFournisseurs, fournisseurs);
         }
 
+        
         private void bValider_Click(object sender, RoutedEventArgs e)
         {
             string idPiece = tbIdPiece.Text;
@@ -279,18 +225,9 @@ namespace Velomax
             }
         }
 
-        
-        private void cbCategories_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (cbAuto.IsChecked == true)
-            {
-                GenerateIdAuto();
-            }
-        }
-
 
         private void GenerateIdAuto()
-        { 
+        {
             int indexCategorie = cbCategories.SelectedIndex;
 
             if (indexCategorie == -1)
@@ -300,83 +237,19 @@ namespace Velomax
             }
             else
             {
-                try
-                {
-                    maConnexion.Open();
-
-                    #region Récupération du code catégorie correspondant à la catégorie
-
-                    MySqlParameter id_categorie = new MySqlParameter("@id_categorie", MySqlDbType.Int32);
-                    id_categorie.Value = categories.Keys[indexCategorie];
-
-                    MySqlCommand command = maConnexion.CreateCommand();
-                    command.CommandText = "SELECT code_categorie FROM categorie WHERE id_categorie = @id_categorie;";
-                    command.Parameters.Add(id_categorie);
-
-                    MySqlDataReader reader = command.ExecuteReader();
-
-                    string codeCategorie = "";
-
-                    if (reader.Read())
-                    {
-                        codeCategorie = reader.GetString(0);
-                    }
-
-                    reader.Close();
-                    command.Dispose();
-
-                    #endregion
-
-                    #region Récupération du dernier id correspondant au code catégorie
-
-                    MySqlParameter code_categorie = new MySqlParameter("@code_categorie", MySqlDbType.VarChar);
-                    code_categorie.Value = codeCategorie;
-
-                    command.CommandText = "SELECT id_piece FROM piece NATURAL JOIN categorie WHERE code_categorie = @code_categorie ORDER BY id_piece DESC;";
-                    command.Parameters.Add(code_categorie);
-
-                    reader = command.ExecuteReader();
-
-                    string dernierIdPiece = "";
-
-                    if (reader.Read())
-                    {
-                        dernierIdPiece = reader.GetString(0);
-                    }
-
-                    reader.Close();
-                    command.Dispose();
-
-                    #endregion
-
-                    string dernierNumString = "";
-
-                    foreach (char c in dernierIdPiece)
-                    {
-                        if (Char.IsDigit(c))
-                        {
-                            dernierNumString += c;
-                        }
-                    }
-
-                    int dernierNum = Convert.ToInt32(dernierNumString);
-                    dernierNum++;
-
-                    string idAuto = codeCategorie + dernierNum.ToString();
-                    tbIdPiece.Text = idAuto;
-
-                }
-                catch (MySqlException erreur)
-                {
-                    MessageBox.Show("Erreur de requête SQL :\n" + erreur);
-                    cbAuto.IsChecked = false;
-                }
-                finally
-                {
-                    maConnexion.Close();
-                }
+                tbIdPiece.Text = GenererId.GenerateIdAuto(maConnexion, cbAuto, categories.Keys[indexCategorie]);
             }
         }
+
+
+        private void cbCategories_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (cbAuto.IsChecked == true)
+            {
+                GenerateIdAuto();
+            }
+        }
+
 
         private void cbAuto_Click(object sender, RoutedEventArgs e)
         {
