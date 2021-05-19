@@ -143,6 +143,7 @@ namespace Velomax
                     MySqlParameter siret_fourn = new MySqlParameter("@siret_fourn", MySqlDbType.VarChar);
                     siret_fourn.Value = fournisseurs.Keys[indexFournisseur];
 
+                    // ORDER BY date_fournit DESC pour avoir le N° produit le plus récent s'il a changé
                     MySqlCommand command = maConnexion.CreateCommand();
                     command.CommandText = "SELECT DISTINCT numCatalogue_fournit FROM fournit WHERE id_piece = @id_piece AND siret_fourn = @siret_fourn ORDER BY date_fournit DESC;";
                     command.Parameters.Add(id_piece);
@@ -289,12 +290,10 @@ namespace Velomax
                                         MySqlParameter id_categorie = new MySqlParameter("@id_categorie", MySqlDbType.Int32);
                                         id_categorie.Value = categories.Keys[indexCategorie];
 
-                                        MySqlParameter siret_fourn = new MySqlParameter("@siret_fourn", MySqlDbType.VarChar);
-                                        siret_fourn.Value = fournisseurs.Keys[indexFournisseur];
-
-                                        
+                                                                                
                                         MySqlCommand command = maConnexion.CreateCommand();
-                                        command.CommandText = "UPDATE piece SET id_piece = @nv_id_piece, prix_piece = @prix_piece, dateIntro_piece = @dateIntro_piece, dateDisc_piece = @dateDisc_piece, stock_piece = @stock_piece, id_categorie = @id_categorie WHERE id_piece = @id_piece;";
+                                        command.CommandText = "UPDATE piece SET id_piece = @nv_id_piece, prix_piece = @prix_piece, dateIntro_piece = @dateIntro_piece, " + 
+                                            "dateDisc_piece = @dateDisc_piece, stock_piece = @stock_piece, id_categorie = @id_categorie WHERE id_piece = @id_piece;";
                                         command.Parameters.Add(id_piece);
                                         command.Parameters.Add(nv_id_piece);
                                         command.Parameters.Add(prix_piece);

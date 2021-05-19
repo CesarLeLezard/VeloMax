@@ -57,6 +57,22 @@ namespace Velomax.modules
         }
 
 
+        private static void RecuperationGrandeurs(MySqlDataReader reader, SortedList<T1, T2> grandeurs)
+        {
+            T1 idGrandeur = reader.GetFieldValue<T1>(0); // récupération 1ère colonne contenant les id_grandeur
+            T2 libGrandeur = reader.GetFieldValue<T2>(1); // récupération 2ème colonne contenant les libellés des grandeurs
+            grandeurs.Add(idGrandeur, libGrandeur);
+        }
+
+
+        private static void RecuperationLignesProduits(MySqlDataReader reader, SortedList<T1, T2> lignesProduits)
+        {
+            T1 idLigne = reader.GetFieldValue<T1>(0); // récupération 1ère colonne contenant les id_ligne
+            T2 libLigne = reader.GetFieldValue<T2>(1); // récupération 2ème colonne contenant les libellés des lignes produits
+            lignesProduits.Add(idLigne, libLigne);
+        }
+
+
         public static void RemplirFournisseurs(MySqlConnection maConnexion, string requete, ComboBox maComboBox, SortedList<T1, T2> fournisseurs)
         {
             Remplir(maConnexion, requete, maComboBox, fournisseurs, RecuperationFournisseurs);
@@ -65,6 +81,16 @@ namespace Velomax.modules
         public static void RemplirCategories(MySqlConnection maConnexion, string requete, ComboBox maComboBox, SortedList<T1, T2> categories)
         {
             Remplir(maConnexion, requete, maComboBox, categories, RecuperationCategories);
+        }
+
+        public static void RemplirGrandeurs(MySqlConnection maConnexion, string requete, ComboBox maComboBox, SortedList<T1, T2> grandeurs)
+        {
+            Remplir(maConnexion, requete, maComboBox, grandeurs, RecuperationGrandeurs);
+        }
+
+        public static void RemplirLignesProduits(MySqlConnection maConnexion, string requete, ComboBox maComboBox, SortedList<T1, T2> lignesProduits)
+        {
+            Remplir(maConnexion, requete, maComboBox, lignesProduits, RecuperationLignesProduits);
         }
 
     }

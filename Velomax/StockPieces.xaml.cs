@@ -1,18 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Velomax
 {
@@ -32,6 +21,8 @@ namespace Velomax
         }
 
 
+        // public pour pouvoir appeler cette fonction à partir d'autres fenetres,
+        // afin d'actualiser la liste
         public void LoadInfosPieces()
         {
             try
@@ -66,39 +57,45 @@ namespace Velomax
         {
             if (dgPieces.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Sélectionnez une pièce");
+                MessageBox.Show("Sélectionnez une pièce", "Supprimer la pièce", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
-                string idPiece = "";
-
-                try
+                MessageBoxResult result = MessageBox.Show("Êtes vous sur ? Cette action est irréversible", "Supprimer la pièce", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
                 {
-                    maConnexion.Open();
-
-                    foreach (DataRowView ligne in dgPieces.SelectedItems)
+                    try
                     {
-                        idPiece = ligne.Row.Field<string>(0); // récupération de l'id pièce à suppr
+                        maConnexion.Open();
 
                         MySqlParameter id_piece = new MySqlParameter("@id_piece", MySqlDbType.VarChar);
-                        id_piece.Value = idPiece;
-
                         MySqlCommand command = maConnexion.CreateCommand();
-                        command.CommandText = "DELETE FROM piece WHERE id_piece = @id_piece;";
                         command.Parameters.Add(id_piece);
 
-                        command.ExecuteNonQuery();
-                        MessageBox.Show("La pièce " + idPiece + " a bien été supprimée");
+                        foreach (DataRowView ligne in dgPieces.SelectedItems)
+                        {
+                            id_piece.Value = ligne.Row.Field<string>(0); // récupération de l'id pièce à suppr
+
+                            command.CommandText = "DELETE FROM piece WHERE id_piece = @id_piece;";
+                            command.ExecuteNonQuery();
+                        }
+
+                        command.Dispose();
+                        MessageBox.Show("Suppression effectuée !", "Validation de suppresion", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
-                }
-                catch (MySqlException erreur)
-                {
-                    MessageBox.Show("Erreur à la suppression de la pièce " + idPiece + " :\n" + erreur);
-                }
-                finally
-                {
-                    maConnexion.Close();
-                    this.LoadInfosPieces(); // actualisation de la liste des pièces
+                    catch (MySqlException erreur)
+                    {
+                        MessageBox.Show("Erreur :\n" + erreur);
+                    }
+                    catch (InvalidCastException)
+                    {
+                        MessageBox.Show("Erreur : élément vide");
+                    }
+                    finally
+                    {
+                        maConnexion.Close();
+                        this.LoadInfosPieces(); // actualisation de la liste des modèles
+                    }
                 }
             }
 
@@ -114,12 +111,19 @@ namespace Velomax
             {
                 string idPiece = "";
 
-                foreach (DataRowView ligne in dgPieces.SelectedItems)
+                try
                 {
-                    idPiece = ligne.Row.Field<string>(0); // récupération de l'id pièce
+                    foreach (DataRowView ligne in dgPieces.SelectedItems)
+                    {
+                        idPiece = ligne.Row.Field<string>(0); // récupération de l'id pièce
 
-                    DetailsPiece windowDetailsPiece = new DetailsPiece(maConnexion, this, idPiece);
-                    windowDetailsPiece.Show();
+                        DetailsPiece windowDetailsPiece = new DetailsPiece(maConnexion, this, idPiece);
+                        windowDetailsPiece.Show();
+                    }
+                }
+                catch (InvalidCastException)
+                {
+                    MessageBox.Show("Erreur : élément vide");
                 }
             }
         }

@@ -11,7 +11,45 @@ namespace Velomax.modules
 {
     class GenererId
     {
+        // génère un id_modele
+        public static int GenerateIdAuto(MySqlConnection maConnexion, CheckBox cbAuto)
+        {
+            try
+            {
+                maConnexion.Open();
 
+                MySqlCommand command = maConnexion.CreateCommand();
+                command.CommandText = "SELECT MAX(id_modele) FROM modele;";
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+                int dernierIdModele = 0;
+
+                if (reader.Read())
+                {
+                    dernierIdModele = reader.GetInt32(0);
+                }
+
+                reader.Close();
+                command.Dispose();
+
+                return ++dernierIdModele;
+            }
+            catch (MySqlException erreur)
+            {
+                MessageBox.Show("Erreur de requête SQL :\n" + erreur);
+                cbAuto.IsChecked = false;
+                return 0;
+            }
+            finally
+            {
+                maConnexion.Close();
+            }
+        }
+
+
+
+        // génère un id_piece en fonction de la catégorie de la pièce
         public static string GenerateIdAuto(MySqlConnection maConnexion, CheckBox cbAuto, int idCategorie)
         {
             try
@@ -46,7 +84,7 @@ namespace Velomax.modules
                 MySqlParameter code_categorie = new MySqlParameter("@code_categorie", MySqlDbType.VarChar);
                 code_categorie.Value = codeCategorie;
 
-                command.CommandText = "SELECT id_piece FROM piece NATURAL JOIN categorie WHERE code_categorie = @code_categorie ORDER BY id_piece DESC;";
+                command.CommandText = "SELECT id_piece FROM piece NATURAL JOIN categorie WHERE code_categorie = @code_categorie ORDER BY LENGTH(id_piece) DESC, id_piece DESC;";
                 command.Parameters.Add(code_categorie);
 
                 reader = command.ExecuteReader();

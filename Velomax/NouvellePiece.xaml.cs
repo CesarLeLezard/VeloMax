@@ -1,17 +1,8 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 using Velomax.modules;
 
 namespace Velomax
@@ -22,7 +13,6 @@ namespace Velomax
     public partial class NouvellePiece : Window
     {
         private MySqlConnection maConnexion;
-
         private StockPieces parent;
 
         private SortedList<int, string> categories;
@@ -237,6 +227,7 @@ namespace Velomax
             }
             else
             {
+                tbIdPiece.IsEnabled = false;
                 tbIdPiece.Text = GenererId.GenerateIdAuto(maConnexion, cbAuto, categories.Keys[indexCategorie]);
             }
         }
@@ -248,6 +239,10 @@ namespace Velomax
             {
                 GenerateIdAuto();
             }
+            else
+            {
+                tbIdPiece.IsEnabled = true;
+            }
         }
 
 
@@ -257,6 +252,11 @@ namespace Velomax
             {
                 GenerateIdAuto();
             }
+            else
+            {
+                tbIdPiece.IsEnabled = true;
+            }
         }
+
     }
 }

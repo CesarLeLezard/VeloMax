@@ -71,3 +71,11 @@ C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj
 C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\Fournisseurs.baml
 C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\DetailsPiece.g.cs
 C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\DetailsPiece.baml
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\NouveauModele.g.cs
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\NouveauModele.baml
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\ListePiecesModele.g.cs
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\ListePiecesModele.baml
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\AjoutPiecesModele.g.cs
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\AjoutPiecesModele.baml
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\DetailsModele.g.cs
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\DetailsModele.baml

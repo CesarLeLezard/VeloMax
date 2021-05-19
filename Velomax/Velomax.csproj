@@ -57,14 +57,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="AjoutPiecesModele.xaml.cs">
+      <DependentUpon>AjoutPiecesModele.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DetailsModele.xaml.cs">
+      <DependentUpon>DetailsModele.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DetailsPiece.xaml.cs">
       <DependentUpon>DetailsPiece.xaml</DependentUpon>
     </Compile>
     <Compile Include="Fournisseurs.xaml.cs">
       <DependentUpon>Fournisseurs.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ListePiecesModele.xaml.cs">
+      <DependentUpon>ListePiecesModele.xaml</DependentUpon>
+    </Compile>
     <Compile Include="modules\GenererId.cs" />
     <Compile Include="modules\RemplirComboBox.cs" />
+    <Compile Include="NouveauModele.xaml.cs">
+      <DependentUpon>NouveauModele.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NouvellePiece.xaml.cs">
       <DependentUpon>NouvellePiece.xaml</DependentUpon>
     </Compile>
@@ -74,11 +86,23 @@
     <Compile Include="StockVelos.xaml.cs">
       <DependentUpon>StockVelos.xaml</DependentUpon>
     </Compile>
+    <Page Include="AjoutPiecesModele.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DetailsModele.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DetailsPiece.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Fournisseurs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListePiecesModele.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -94,6 +118,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="NouveauModele.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="NouvellePiece.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

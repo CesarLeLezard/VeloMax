@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Velomax"
         mc:Ignorable="d"
-        Title="Stock" Height="700" Width="1220" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
-    <Canvas Background="#FFD9D9D9">
+        Title="Stock" Height="700" Width="1220" Background="#FFD9D9D9" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+    <Canvas>
         <Label x:Name="lTitre" Content="Stock" HorizontalAlignment="Left" Height="90" VerticalAlignment="Top" Width="1174" FontFamily="Courier New" FontSize="72" Foreground="#FFC33F23" BorderBrush="#FF299ACF" Background="{x:Null}" RenderTransformOrigin="0.5,0.5" Canvas.Left="10" Canvas.Top="36" HorizontalContentAlignment="Center">
             <Label.Effect>
                 <DropShadowEffect Color="#FF198397"/>
