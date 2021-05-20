@@ -111,7 +111,7 @@ namespace Velomax
                     }
                     else
                     {
-                        // this.parentBou.RefreshFidelio();
+                        this.parentBou.RefreshFidelio();
                     }
                 }
                 

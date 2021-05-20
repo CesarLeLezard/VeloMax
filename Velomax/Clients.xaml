@@ -273,17 +273,17 @@
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="bNvVelo_Copy" Content="Nouveau client" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="1522" Canvas.Top="563">
+        <Button x:Name="bNvClientBou" Content="Nouveau client" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="1522" Canvas.Top="563" Click="bNvClientBou_Click">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="bDetailsModele_Copy" Content="Détails" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="1522" Canvas.Top="650">
+        <Button x:Name="bDetailsClientBou" Content="Détails" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="1522" Canvas.Top="650" Click="bDetailsClientBou_Click">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="bSupprimer_Copy" Content="Supprimer" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="1522" Canvas.Top="733">
+        <Button x:Name="bSupprimerClientBou" Content="Supprimer" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="1522" Canvas.Top="733" Click="bSupprimerClientBou_Click">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>

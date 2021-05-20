@@ -160,5 +160,85 @@ namespace Velomax
                 }
             }
         }
+
+        private void bNvClientBou_Click(object sender, RoutedEventArgs e)
+        {
+            NouveauClientBou window = new NouveauClientBou(maConnexion, this);
+            window.Show();
+        }
+
+        private void bDetailsClientBou_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgClientsBou.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Sélectionnez un client");
+            }
+            else
+            {
+                int idClient = 0;
+
+                try
+                {
+                    foreach (DataRowView ligne in dgClientsBou.SelectedItems)
+                    {
+                        idClient = ligne.Row.Field<int>(0); // récupération de l'id modèle
+
+                        DetailsClientBou window = new DetailsClientBou(maConnexion, this, idClient);
+                        window.Show();
+                    }
+                }
+                catch (InvalidCastException)
+                {
+                    MessageBox.Show("Erreur : élément vide");
+                }
+            }
+        }
+
+        private void bSupprimerClientBou_Click(object sender, RoutedEventArgs e)
+        {
+            if (dgClientsBou.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Sélectionnez un client", "Supprimer le client", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBoxResult result = MessageBox.Show("Êtes vous sur ? Cette action est irréversible", "Supprimer le client", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        maConnexion.Open();
+
+                        MySqlParameter id_clientBou = new MySqlParameter("@id_clientBou", MySqlDbType.Int32);
+                        MySqlCommand command = maConnexion.CreateCommand();
+                        command.Parameters.Add(id_clientBou);
+
+                        foreach (DataRowView ligne in dgClientsBou.SelectedItems)
+                        {
+                            id_clientBou.Value = ligne.Row.Field<int>(0); // récupération de l'id client à suppr
+
+                            command.CommandText = "DELETE FROM clientBou WHERE id_clientBou = @id_clientBou;";
+                            command.ExecuteNonQuery();
+                        }
+
+                        command.Dispose();
+                        MessageBox.Show("Suppression effectuée !", "Validation de suppresion", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                    catch (MySqlException erreur)
+                    {
+                        MessageBox.Show("Erreur :\n" + erreur);
+                    }
+                    catch (InvalidCastException)
+                    {
+                        MessageBox.Show("Erreur : élément vide");
+                    }
+                    finally
+                    {
+                        maConnexion.Close();
+                        this.LoadInfosClientsBou(); // actualisation de la liste des modèles
+                    }
+                }
+            }
+        }
     }
 }

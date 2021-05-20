@@ -86,6 +86,9 @@
     </Compile>
     <Compile Include="modules\GenererId.cs" />
     <Compile Include="modules\RemplirComboBox.cs" />
+    <Compile Include="NouveauClientBou.xaml.cs">
+      <DependentUpon>NouveauClientBou.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NouveauClientInd.xaml.cs">
       <DependentUpon>NouveauClientInd.xaml</DependentUpon>
     </Compile>
@@ -146,6 +149,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="ModifierFidelio.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="NouveauClientBou.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

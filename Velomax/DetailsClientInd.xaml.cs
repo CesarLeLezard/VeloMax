@@ -28,9 +28,9 @@ namespace Velomax
 
         public DetailsClientInd(MySqlConnection maConnexion, Clients parent, int idClient)
         {
-            this.maConnexion = maConnexion;
             InitializeComponent();
 
+            this.maConnexion = maConnexion;
             this.parent = parent;
             this.idClient = idClient;
             InitInfosClient();
@@ -223,20 +223,20 @@ namespace Velomax
                                             mail_clientInd.Value = mail;
 
 
-                                            MySqlCommand command1 = maConnexion.CreateCommand();
-                                            command1.CommandText = "UPDATE clientInd SET nom_clientInd = @nom_clientInd, prenom_clientInd = @prenom_clientInd, tel_clientInd = @tel_clientInd, adresse_clientInd = @adresse_clientInd," +
+                                            MySqlCommand command = maConnexion.CreateCommand();
+                                            command.CommandText = "UPDATE clientInd SET nom_clientInd = @nom_clientInd, prenom_clientInd = @prenom_clientInd, tel_clientInd = @tel_clientInd, adresse_clientInd = @adresse_clientInd," +
                                                 " codeP_clientInd = @codeP_clientInd, ville_clientInd = @ville_clientInd, mail_clientInd = @mail_clientInd WHERE id_clientInd = @id_clientInd;";
-                                            command1.Parameters.Add(id_clientInd);
-                                            command1.Parameters.Add(nom_clientInd);
-                                            command1.Parameters.Add(prenom_clientInd);
-                                            command1.Parameters.Add(tel_clientInd);
-                                            command1.Parameters.Add(adresse_clientInd);
-                                            command1.Parameters.Add(codeP_clientInd);
-                                            command1.Parameters.Add(ville_clientInd);
-                                            command1.Parameters.Add(mail_clientInd);
+                                            command.Parameters.Add(id_clientInd);
+                                            command.Parameters.Add(nom_clientInd);
+                                            command.Parameters.Add(prenom_clientInd);
+                                            command.Parameters.Add(tel_clientInd);
+                                            command.Parameters.Add(adresse_clientInd);
+                                            command.Parameters.Add(codeP_clientInd);
+                                            command.Parameters.Add(ville_clientInd);
+                                            command.Parameters.Add(mail_clientInd);
 
-                                            command1.ExecuteNonQuery();
-                                            command1.Dispose();
+                                            command.ExecuteNonQuery();
+                                            command.Dispose();
 
                                             MessageBox.Show("Le client a bien été modifié");
                                             
