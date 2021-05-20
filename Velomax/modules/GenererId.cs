@@ -11,6 +11,41 @@ namespace Velomax.modules
 {
     class GenererId
     {
+        // génère un id_client
+        public static int GenerateIdAuto(MySqlConnection maConnexion, string requete)
+        {
+            try
+            {
+                maConnexion.Open();
+
+                MySqlCommand command = maConnexion.CreateCommand();
+                command.CommandText = requete;
+
+                MySqlDataReader reader = command.ExecuteReader();
+
+                int dernierId = 0;
+
+                if (reader.Read())
+                {
+                    dernierId = reader.GetInt32(0);
+                }
+
+                reader.Close();
+                command.Dispose();
+
+                return ++dernierId;
+            }
+            catch (MySqlException erreur)
+            {
+                MessageBox.Show("Erreur de requête SQL :\n" + erreur);
+                return 0;
+            }
+            finally
+            {
+                maConnexion.Close();
+            }
+        }
+
         // génère un id_modele
         public static int GenerateIdAuto(MySqlConnection maConnexion, CheckBox cbAuto)
         {

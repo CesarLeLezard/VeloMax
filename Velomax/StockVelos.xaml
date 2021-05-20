@@ -128,17 +128,12 @@
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="bDetailsModele" Content="Détails" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="324" Canvas.Top="659" Click="bDetailsModele_Click">
+        <Button x:Name="bDetailsModele" Content="Détails" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="461" Canvas.Top="659" Click="bDetailsModele_Click">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="bSupprimer" Content="Supprimer" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="586" Canvas.Top="659" Click="bSupprimer_Click">
-            <Button.Effect>
-                <DropShadowEffect Color="#FFC33F23"/>
-            </Button.Effect>
-        </Button>
-        <Button x:Name="bListePieces" Content="Liste pièces" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="848" Canvas.Top="659" Click="bListePieces_Click">
+        <Button x:Name="bSupprimer" Content="Supprimer" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="848" Canvas.Top="659" Click="bSupprimer_Click">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>

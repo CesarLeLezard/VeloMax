@@ -79,3 +79,13 @@ C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj
 C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\AjoutPiecesModele.baml
 C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\DetailsModele.g.cs
 C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\DetailsModele.baml
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\Clients.g.cs
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\Clients.baml
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\NouveauClientInd.g.cs
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\NouveauClientInd.baml
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\DetailsClientInd.g.cs
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\DetailsClientInd.baml
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\DetailsClientBou.g.cs
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\ModifierFidelio.g.cs
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\DetailsClientBou.baml
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\ModifierFidelio.baml

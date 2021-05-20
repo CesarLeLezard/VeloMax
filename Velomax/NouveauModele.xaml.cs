@@ -135,7 +135,7 @@ namespace Velomax
                                                 id_grandeur.Value = grandeurs.Keys[indexGrandeur];
 
                                                 MySqlParameter id_ligne = new MySqlParameter("@id_ligne", MySqlDbType.Int32);
-                                                id_ligne.Value = lignesProduits.Keys[indexLigneProduit]; ;
+                                                id_ligne.Value = lignesProduits.Keys[indexLigneProduit];
 
 
                                                 MySqlCommand command = maConnexion.CreateCommand();

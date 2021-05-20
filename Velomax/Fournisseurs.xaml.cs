@@ -38,7 +38,8 @@ namespace Velomax
                 maConnexion.Open();
 
                 MySqlCommand command = maConnexion.CreateCommand();
-                command.CommandText = "SELECT siret_fourn, nom_fourn, tel_fourn, mail_fourn, adresse_fourn, codeP_fourn, ville_fourn, lib_react FROM fournisseur NATURAL JOIN reactivite ORDER BY nom_fourn;";
+                command.CommandText = "SELECT siret_fourn, nom_fourn, tel_fourn, mail_fourn, adresse_fourn, codeP_fourn," +
+                    " ville_fourn, lib_react FROM fournisseur NATURAL JOIN reactivite ORDER BY nom_fourn;";
 
                 DataTable dt = new DataTable();
                 dt.Load(command.ExecuteReader());

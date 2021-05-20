@@ -280,5 +280,11 @@ namespace Velomax
                 }
             }
         }
+
+        private void bModifierPieces_Click(object sender, RoutedEventArgs e)
+        {
+            AjoutPiecesModele windowListePieces = new AjoutPiecesModele(maConnexion, idModele.ToString());
+            windowListePieces.Show();
+        }
     }
 }

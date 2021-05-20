@@ -38,6 +38,11 @@
         <Button x:Name="bDown" Height="16" Width="30" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="542" Canvas.Top="228" Click="bDown_Click">
             <Image Source="images/down.png"/>
         </Button>
+        <Button x:Name="bModifierPieces" Content="Liste pièces" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="210" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="557" Canvas.Top="393" Click="bModifierPieces_Click">
+            <Button.Effect>
+                <DropShadowEffect Color="#FFC33F23"/>
+            </Button.Effect>
+        </Button>
 
     </Canvas>
 </Window>

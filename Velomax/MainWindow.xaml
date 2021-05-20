@@ -16,7 +16,7 @@
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="bClients" Content="Clients" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Grid.Column="1" Canvas.Left="321" Canvas.Top="292">
+        <Button x:Name="bClients" Content="Clients" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Grid.Column="1" Canvas.Left="321" Canvas.Top="292" Click="bClients_Click">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>

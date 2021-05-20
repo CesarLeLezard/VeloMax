@@ -42,7 +42,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Tél." Binding="{Binding tel_fourn, StringFormat={}{0:## ## ## ## ##}}" Width="150" IsReadOnly="True">
+                <DataGridTextColumn Header="Tél." Binding="{Binding tel_fourn}" Width="150" IsReadOnly="True">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />

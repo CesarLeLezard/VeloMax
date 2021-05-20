@@ -72,6 +72,13 @@ namespace Velomax.modules
             lignesProduits.Add(idLigne, libLigne);
         }
 
+        private static void RecuperationFidelios(MySqlDataReader reader, SortedList<T1, T2> fidelios)
+        {
+            T1 idFidelio = reader.GetFieldValue<T1>(0); // récupération 1ère colonne contenant les id_fidelio
+            T2 libFidelio = reader.GetFieldValue<T2>(1); // récupération 2e colonne contenant les libellés des programmes
+            fidelios.Add(idFidelio, libFidelio);
+        }
+
 
         public static void RemplirFournisseurs(MySqlConnection maConnexion, string requete, ComboBox maComboBox, SortedList<T1, T2> fournisseurs)
         {
@@ -91,6 +98,11 @@ namespace Velomax.modules
         public static void RemplirLignesProduits(MySqlConnection maConnexion, string requete, ComboBox maComboBox, SortedList<T1, T2> lignesProduits)
         {
             Remplir(maConnexion, requete, maComboBox, lignesProduits, RecuperationLignesProduits);
+        }
+
+        public static void RemplirFidelios(MySqlConnection maConnexion, string requete, ComboBox maComboBox, SortedList<T1, T2> fidelios)
+        {
+            Remplir(maConnexion, requete, maComboBox, fidelios, RecuperationFidelios);
         }
 
     }

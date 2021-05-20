@@ -33,6 +33,7 @@ namespace Velomax
             this.maConnexion = maConnexion;
             this.idModele = idModele;
             LoadPieces("SELECT id_piece, lib_categorie FROM piece NATURAL JOIN categorie ORDER BY id_piece;");
+            LoadPiecesAjoutees();
             InitCategories();
         }
 

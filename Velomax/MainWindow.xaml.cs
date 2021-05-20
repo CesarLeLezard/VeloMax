@@ -51,5 +51,11 @@ namespace Velomax
             Fournisseurs windowFournisseurs = new Fournisseurs(maConnexion);
             windowFournisseurs.Show();
         }
+
+        private void bClients_Click(object sender, RoutedEventArgs e)
+        {
+            Clients windowClients = new Clients(maConnexion);
+            windowClients.Show();
+        }
     }
 }
