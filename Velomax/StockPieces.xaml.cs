@@ -1,7 +1,10 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Windows;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace Velomax
 {
@@ -125,6 +128,53 @@ namespace Velomax
                 {
                     MessageBox.Show("Erreur : élément vide");
                 }
+            }
+        }
+        public class Piece
+        {
+            public string id_piece { get; set; }
+            public string categorie { get; set; }
+            public DateTime début_prod { get; set; }
+            public DateTime fin_prod { get; set; }
+            public double prix { get; set; }
+            public int stock { get; set; }
+            public Piece() { }
+            public Piece(string id_piece, string categorie, DateTime debut, DateTime fin, double prix, int stock)
+            {
+                this.id_piece = id_piece;
+                this.categorie = categorie;
+                this.début_prod = debut;
+                this.fin_prod = fin;
+                this.prix = prix;
+                this.stock = stock;
+            }
+        }
+        private void bExportStock_Click(object sender, RoutedEventArgs e)
+        {
+            List<Piece> l = new List<Piece>();
+
+            foreach (DataRowView ligne in dgPieces.ItemsSource)
+            {
+
+                if (ligne.Row.Field<int>(5) < 11)
+                {
+                    //MessageBox.Show(Convert.ToString(ligne.Row.Field<float>(2)));
+                    Piece nouv = new Piece(ligne.Row.Field<string>(0), ligne.Row.Field<string>(1), ligne.Row.Field<DateTime>(3), ligne.Row.Field<DateTime>(4), ligne.Row.Field<float>(2), ligne.Row.Field<int>(5));
+                    l.Add(nouv);
+                    //MessageBox.Show(Convert.ToString(nouv.id_piece));
+                }
+            }
+            try
+            {
+                XmlSerializer xs = new XmlSerializer(typeof(List<Piece>));
+                StreamWriter wr = new StreamWriter("StockFaible.xml");
+                xs.Serialize(wr, l);
+                wr.Close();
+                MessageBox.Show("Exportation réussie");
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show("Une erreur s'est produite ", Convert.ToString(err));
             }
         }
     }
