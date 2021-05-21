@@ -26,7 +26,7 @@
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="bCommandes" Content="Commandes" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Grid.Column="1" Canvas.Left="589" Canvas.Top="172">
+        <Button x:Name="bCommandes" Content="Commandes" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Grid.Column="1" Canvas.Left="589" Canvas.Top="172" Click="bCommandes_Click">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>

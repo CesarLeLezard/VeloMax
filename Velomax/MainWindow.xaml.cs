@@ -57,5 +57,11 @@ namespace Velomax
             Clients windowClients = new Clients(maConnexion);
             windowClients.Show();
         }
+
+        private void bCommandes_Click(object sender, RoutedEventArgs e)
+        {
+            Commandes window = new Commandes(maConnexion);
+            window.Show();
+        }
     }
 }

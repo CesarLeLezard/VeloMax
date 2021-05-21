@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\App.xaml
-16251125955
+17717968894
 
-23-996125298
+24-1254692584
 15-215643688
-AjoutPiecesModele.xaml;Clients.xaml;DetailsClientBou.xaml;DetailsClientInd.xaml;DetailsModele.xaml;DetailsPiece.xaml;Fournisseurs.xaml;ListePiecesModele.xaml;MainWindow.xaml;ModifierFidelio.xaml;NouveauClientBou.xaml;NouveauClientInd.xaml;NouveauModele.xaml;NouvellePiece.xaml;StockPieces.xaml;StockVelos.xaml;
+AjoutPiecesModele.xaml;Clients.xaml;Commandes.xaml;DetailsClientBou.xaml;DetailsClientInd.xaml;DetailsModele.xaml;DetailsPiece.xaml;Fournisseurs.xaml;ListePiecesModele.xaml;MainWindow.xaml;ModifierFidelio.xaml;NouveauClientBou.xaml;NouveauClientInd.xaml;NouveauModele.xaml;NouvellePiece.xaml;StockPieces.xaml;StockVelos.xaml;
 
 True
 
