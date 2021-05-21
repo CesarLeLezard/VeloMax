@@ -10,11 +10,11 @@ none
 false
 TRACE
 C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\App.xaml
-61892910796
+18987061931
 
-101379167801
-14-430030424
-DetailsPiece.xaml;Fournisseurs.xaml;MainWindow.xaml;NouvellePiece.xaml;StockPieces.xaml;StockVelos.xaml;
+241343205521
+15-215643688
+AjoutPiecesModele.xaml;Clients.xaml;Commandes.xaml;DetailsClientBou.xaml;DetailsClientInd.xaml;DetailsModele.xaml;DetailsPiece.xaml;Fournisseurs.xaml;ListePiecesModele.xaml;MainWindow.xaml;ModifierFidelio.xaml;NouveauClientBou.xaml;NouveauClientInd.xaml;NouveauModele.xaml;NouvelleCommande.xaml;NouvellePiece.xaml;StockPieces.xaml;StockVelos.xaml;
 
 True
 

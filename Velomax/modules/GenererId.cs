@@ -11,7 +11,7 @@ namespace Velomax.modules
 {
     class GenererId
     {
-        // génère un id_client
+        // génère un id_client ou id_commande
         public static int GenerateIdAuto(MySqlConnection maConnexion, string requete)
         {
             try

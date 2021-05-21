@@ -1,18 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace Velomax
 {
@@ -32,7 +20,7 @@ namespace Velomax
         }
 
 
-        private void LoadInfosCommandes()
+        public void LoadInfosCommandes()
         {
             try
             {
@@ -58,6 +46,12 @@ namespace Velomax
             {
                 maConnexion.Close();
             }
+        }
+
+        private void bNvCommande_Click(object sender, RoutedEventArgs e)
+        {
+            NouvelleCommande window = new NouvelleCommande(maConnexion, this);
+            window.Show();
         }
     }
 }

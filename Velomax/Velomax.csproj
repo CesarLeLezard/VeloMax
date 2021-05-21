@@ -63,6 +63,9 @@
     <Compile Include="Clients.xaml.cs">
       <DependentUpon>Clients.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CommanderPiecesModeles.xaml.cs">
+      <DependentUpon>CommanderPiecesModeles.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Commandes.xaml.cs">
       <DependentUpon>Commandes.xaml</DependentUpon>
     </Compile>
@@ -98,8 +101,14 @@
     <Compile Include="NouveauModele.xaml.cs">
       <DependentUpon>NouveauModele.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NouvelleCommande.xaml.cs">
+      <DependentUpon>NouvelleCommande.xaml</DependentUpon>
+    </Compile>
     <Compile Include="NouvellePiece.xaml.cs">
       <DependentUpon>NouvellePiece.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RapportStats.xaml.cs">
+      <DependentUpon>RapportStats.xaml</DependentUpon>
     </Compile>
     <Compile Include="StockPieces.xaml.cs">
       <DependentUpon>StockPieces.xaml</DependentUpon>
@@ -112,6 +121,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Clients.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CommanderPiecesModeles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -171,7 +184,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="NouvelleCommande.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="NouvellePiece.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="RapportStats.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

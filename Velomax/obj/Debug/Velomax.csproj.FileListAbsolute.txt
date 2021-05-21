@@ -93,3 +93,7 @@ C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj
 C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\NouveauClientBou.baml
 C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\Commandes.g.cs
 C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\Commandes.baml
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\NouvelleCommande.g.cs
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\NouvelleCommande.baml
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\CommanderPiecesModeles.g.cs
+C:\Users\alexg\Documents\Travail\ESILV 3A\S6\BDD\ProblemeBDD\velomax\Velomax\obj\Debug\CommanderPiecesModeles.baml
