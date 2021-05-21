@@ -1,4 +1,4 @@
-﻿<Window x:Class="Velomax.MainWindow"
+<Window x:Class="Velomax.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -36,10 +36,12 @@
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
-        <Button x:Name="bAutre" Content="Autre" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="589" Canvas.Top="292">
+        <Button x:Name="bAutre" Content="Autre" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="215" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="589" Canvas.Top="292" Click="bAutre_Click">
             <Button.Effect>
                 <DropShadowEffect Color="#FFC33F23"/>
             </Button.Effect>
         </Button>
+        <RadioButton Content="root" GroupName="UID" Canvas.Left="44" Canvas.Top="19" FontSize="20" VerticalContentAlignment="Center" IsChecked="True" Checked="RadioButton_Checked_1"/>
+        <RadioButton Content="bozo" GroupName="UID" Canvas.Left="44" Canvas.Top="50" FontSize="20" VerticalContentAlignment="Center" Checked="RadioButton_Checked"/>
     </Canvas>
 </Window>
