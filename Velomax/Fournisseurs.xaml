@@ -22,14 +22,14 @@
         </Label>
         <DataGrid x:Name="dgFournisseurs" Height="308" Canvas.Left="62" Canvas.Top="214" Width="1366" AutoGenerateColumns="False" FontSize="16" HorizontalGridLinesBrush="#FFB6B6B6" VerticalGridLinesBrush="#FFB6B6B6">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="N° SIRET" Binding="{Binding siret_fourn}" Width="150" IsReadOnly="True">
+                <DataGridTextColumn Header="N° SIRET" Binding="{Binding siret_fourn}" Width="150" IsReadOnly="False">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
                         </Style>
                     </DataGridTextColumn.HeaderStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Nom" Binding="{Binding nom_fourn}" Width="200" IsReadOnly="True">
+                <DataGridTextColumn Header="Nom" Binding="{Binding nom_fourn}" Width="200" IsReadOnly="False">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -42,7 +42,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Tél." Binding="{Binding tel_fourn}" Width="150" IsReadOnly="True">
+                <DataGridTextColumn Header="Tél." Binding="{Binding tel_fourn}" Width="150" IsReadOnly="False">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -54,7 +54,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="E-mail" Binding="{Binding mail_fourn}" Width="220" IsReadOnly="True">
+                <DataGridTextColumn Header="E-mail" Binding="{Binding mail_fourn}" Width="220" IsReadOnly="False">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -67,7 +67,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Adresse" Binding="{Binding adresse_fourn}" Width="250" IsReadOnly="True">
+                <DataGridTextColumn Header="Adresse" Binding="{Binding adresse_fourn}" Width="250" IsReadOnly="False">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -80,7 +80,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Code postal" Binding="{Binding codeP_fourn}" Width="120" IsReadOnly="True">
+                <DataGridTextColumn Header="Code postal" Binding="{Binding codeP_fourn}" Width="120" IsReadOnly="False">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -93,7 +93,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Ville" Binding="{Binding ville_fourn}" Width="150" IsReadOnly="True">
+                <DataGridTextColumn Header="Ville" Binding="{Binding ville_fourn}" Width="150" IsReadOnly="False">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -106,7 +106,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Header="Réactivité" Binding="{Binding lib_react}" Width="100" IsReadOnly="True">
+                <DataGridTextColumn Header="Réactivité" Binding="{Binding lib_react}" Width="100" IsReadOnly="False">
                     <DataGridTextColumn.HeaderStyle>
                         <Style TargetType="DataGridColumnHeader">
                             <Setter Property="HorizontalContentAlignment" Value="Center" />
@@ -121,6 +121,21 @@
                 </DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <Button x:Name="bAjoutFournisseurs" Content="Ajout" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="280" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Grid.Column="1" Canvas.Left="62" Canvas.Top="580" Click="bAjoutFournisseurs_Click">
+            <Button.Effect>
+                <DropShadowEffect Color="#FFC33F23"/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="bSuppressionFournisseurs" Content="Supprimer" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="280" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="600" Canvas.Top="580" Click="bSuppressionFournisseurs_Click">
+            <Button.Effect>
+                <DropShadowEffect Color="#FFC33F23"/>
+            </Button.Effect>
+        </Button>
+        <Button x:Name="bModifierFournisseurs" Content="Modifier" HorizontalAlignment="Left" Height="100" VerticalAlignment="Top" Width="280" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Click="OuvrirStockPieces" Canvas.Left="1148" Canvas.Top="580">
+            <Button.Effect>
+                <DropShadowEffect Color="#FFC33F23"/>
+            </Button.Effect>
+        </Button>
 
     </Canvas>
 </Window>

@@ -69,6 +69,9 @@
     <Compile Include="Commandes.xaml.cs">
       <DependentUpon>Commandes.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CréationFournisseurs.xaml.cs">
+      <DependentUpon>CréationFournisseurs.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DetailsClientBou.xaml.cs">
       <DependentUpon>DetailsClientBou.xaml</DependentUpon>
     </Compile>
@@ -129,6 +132,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Commandes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CréationFournisseurs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
