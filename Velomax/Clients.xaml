@@ -290,6 +290,11 @@
         </Button>
         <Label Content="Clients individus :" Canvas.Left="37" Canvas.Top="126" Width="155" FontSize="18"/>
         <Label Content="Clients boutique :" Canvas.Left="37" Canvas.Top="508" Width="155" FontSize="18"/>
+        <Button x:Name="bExportFidelio" Content="Export" HorizontalAlignment="Left" Height="60" VerticalAlignment="Top" Width="240" FontSize="36" FontFamily="Corbel Light" Background="#FF299ACF" BorderBrush="#FFC33F23" Cursor="Hand" Canvas.Left="1522" Canvas.Top="482" Click="bExportFidelio_Click">
+            <Button.Effect>
+                <DropShadowEffect Color="#FFC33F23"/>
+            </Button.Effect>
+        </Button>
 
     </Canvas>
 </Window>

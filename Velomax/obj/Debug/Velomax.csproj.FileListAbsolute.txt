@@ -167,3 +167,5 @@ C:\Users\Antoine\Documents\esilv\Cours\sql\velomax\Velomax\obj\Debug\Velomax.csp
 C:\Users\Antoine\Documents\esilv\Cours\sql\velomax\Velomax\obj\Debug\Velomax.csproj.CopyComplete
 C:\Users\Antoine\Documents\esilv\Cours\sql\velomax\Velomax\obj\Debug\Velomax.exe
 C:\Users\Antoine\Documents\esilv\Cours\sql\velomax\Velomax\obj\Debug\Velomax.pdb
+C:\Users\Antoine\Documents\esilv\Cours\sql\velomax\Velomax\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Antoine\Documents\esilv\Cours\sql\velomax\Velomax\bin\Debug\Newtonsoft.Json.xml

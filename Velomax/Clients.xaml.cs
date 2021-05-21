@@ -1,7 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -238,6 +240,79 @@ namespace Velomax
                         this.LoadInfosClientsBou(); // actualisation de la liste des modèles
                     }
                 }
+            }
+        }
+        public class Client
+        {
+
+            public string id_clients { get; set; }
+            public string nom { get; set; }
+            public string prenom { get; set; }
+            public string adresse { get; set; }
+            public string codep { get; set; }
+            public string ville { get; set; }
+            public string tel { get; set; }
+            public string mail { get; set; }
+            public Client() { }
+            public Client(string id_piece, string nom, string prenom, string addresse, string codep, string ville, string tel, string mail)
+            {
+                this.id_clients = id_clients;
+                this.adresse = adresse;
+                this.adresse = codep;
+                this.ville = ville;
+                this.mail = mail;
+                this.nom = nom;
+                this.prenom = prenom;
+                this.mail = mail;
+            }
+        }
+        private void bExportFidelio_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                maConnexion.Open();
+
+                MySqlCommand command = maConnexion.CreateCommand();
+                command.CommandText = "SELECT clientInd.id_clientInd ,clientInd.nom_clientInd, clientInd.prenom_clientInd, clientInd.adresse_clientInd, clientInd.codeP_clientInd , clientInd.ville_clientInd, clientInd.tel_clientInd , clientInd.mail_clientInd, ADDDATE(date_adhereInd, INTERVAL duree_fidelio YEAR) AS date_expiration FROM clientInd NATURAL JOIN adhereInd NATURAL JOIN fidelio;";
+                MySqlDataReader reader = command.ExecuteReader();
+                List<Client> l = new List<Client>();
+                while (reader.Read())
+                {
+                    MessageBox.Show(Convert.ToString(reader.GetDateTime(8)));
+                    DateTime dateExpiration = reader.GetDateTime(8);
+                    DateTime rValue = DateTime.Now;
+                    int diffmonth = (dateExpiration.Month - rValue.Month) + 12 * (dateExpiration.Year - rValue.Year);
+                    if (diffmonth < 2)
+                    {
+                        Client c = new Client(reader.GetString(0), reader.GetString(1), reader.GetString(2), reader.GetString(3), reader.GetString(4), reader.GetString(5), reader.GetString(6), reader.GetString(7));
+                        l.Add(c);
+                    }
+                }
+                try
+                {
+                    string nomFichier = "liste_clients_fidelio_fin.json";
+                    StreamWriter writer = new StreamWriter(nomFichier);
+                    JsonTextWriter jwriter = new JsonTextWriter(writer);
+                    JsonSerializer serializer = new JsonSerializer();
+                    serializer.Serialize(jwriter, l);
+                    writer.Close();
+                    jwriter.Close();
+                    MessageBox.Show("L'exportation a été réussie avec succès!");
+                }
+                catch (Exception err)
+                {
+                    MessageBox.Show("Une erreur s'est produite ", Convert.ToString(err));
+                }
+
+                command.Dispose();
+            }
+            catch (MySqlException erreur)
+            {
+                MessageBox.Show("Erreur de requête SQL :\n" + erreur);
+            }
+            finally
+            {
+                maConnexion.Close();
             }
         }
     }
